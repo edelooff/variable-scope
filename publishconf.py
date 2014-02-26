@@ -18,12 +18,7 @@ CATEGORY_FEED_ATOM = 'feeds/%s.atom.xml'
 
 DELETE_OUTPUT_DIRECTORY = True
 
-ARTICLE_URL = 'posts/{slug}'
 ARTICLE_SAVE_AS = 'posts/{slug}'
-PAGE_URL = 'pages/{slug}'
 PAGE_SAVE_AS = 'pages/{slug}'
-CATEGORY_URL = 'category/{slug}'
 CATEGORY_SAVE_AS = 'category{slug}'
-TAG_URL = 'tag/{slug}'
 TAG_SAVE_AS = 'tag/{slug}'
-AUTHOR_SAVE_AS = ''
