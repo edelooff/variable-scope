@@ -13,6 +13,7 @@ from pelicanconf import *
 SITEURL = 'http://variable-scope.com'
 RELATIVE_URLS = False
 
+DISQUS_SITENAME = 'variablescope'
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
 CATEGORY_FEED_ATOM = 'feeds/%s.atom.xml'
 
