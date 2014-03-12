@@ -19,13 +19,11 @@ def clean():
         local('mkdir {deploy_path}'.format(**env))
 
 def build():
+    clean()
     local('pelican -s pelicanconf.py')
 
-def rebuild():
-    clean()
-    build()
-
 def regenerate():
+    clean()
     local('pelican -r -s pelicanconf.py')
 
 def serve():
