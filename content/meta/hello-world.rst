@@ -2,7 +2,7 @@ Hello world
 ###########
 
 :date: 2014/02/23 14:51
-:tags: Pyramid, Pelican, Blog
+:tags: Pyramid, Pelican, Blog, Python
 
 .. code-block:: python
 
