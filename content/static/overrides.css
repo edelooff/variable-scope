@@ -13,6 +13,14 @@ article pre { font-size: 16px; }
 .well-sm {
   padding: 0;
 }
+/* post-intro class for introductions to posts */
+p.post-intro {
+  margin-bottom: 1.5em;
+  padding: 0 1em 1.5em;
+  border-bottom: 1px #e6e6e6 solid;
+  font-size: 0.9em;
+  font-style: italic;
+}
 /* Don't render the tag cloud as an actual list */
 #tags > li {
   display: inline;
