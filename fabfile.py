@@ -1,55 +1,63 @@
-from fabric.api import *
-import fabric.contrib.project as project
+# Standard modules
 import os
 import sys
 import SimpleHTTPServer
 import SocketServer
 
-# Local path configuration (can be absolute or relative to fabfile)
-env.deploy_path = 'output'
-DEPLOY_PATH = env.deploy_path
+# Third-party modules
+from fabric.api import env, hide, local, task
+from fabric.contrib import project
 
-# Remote server configuration
-production = 'neon'
-dest_path = '/var/www/blog'
+# Fabric configuration for the local deployment path and target hosts
+env.deploy_path = 'output/'
+env.remote_path = '/var/www/blog'
+env.hosts = 'neon',
 
+
+@task
 def clean():
-    if os.path.isdir(DEPLOY_PATH):
+    if os.path.isdir(env.deploy_path):
         local('rm -rf {deploy_path}'.format(**env))
         local('mkdir {deploy_path}'.format(**env))
 
+@task
 def build():
     clean()
     local('pelican -s pelicanconf.py')
 
+@task
+def preview():
+    clean()
+    local('pelican -s publishconf.py')
+
+@task
 def regenerate():
     clean()
     local('pelican -r -s pelicanconf.py')
 
+@task
 def serve():
-    os.chdir(env.deploy_path)
-
-    PORT = 8000
     class AddressReuseTCPServer(SocketServer.TCPServer):
         allow_reuse_address = True
 
-    server = AddressReuseTCPServer(('', PORT), SimpleHTTPServer.SimpleHTTPRequestHandler)
+    os.chdir(env.deploy_path)
+    host, port = 'localhost', 8000
+    server = AddressReuseTCPServer(
+        (host, port), SimpleHTTPServer.SimpleHTTPRequestHandler)
 
-    sys.stderr.write('Serving on port {0} ...\n'.format(PORT))
+    sys.stderr.write('Serving on http://{0}:{1} ...\n'.format(host, port))
     server.serve_forever()
 
+@task
 def reserve():
     build()
     serve()
 
-def preview():
-    local('pelican -s publishconf.py')
-
-@hosts(production)
+@task
 def publish():
-    local('pelican -s publishconf.py')
-    project.rsync_project(
-        remote_dir=dest_path,
-        local_dir=DEPLOY_PATH.rstrip('/') + '/',
-        delete=True
-    )
+    with hide('output'):
+      preview()
+      project.rsync_project(
+          remote_dir=env.remote_path,
+          local_dir=env.deploy_path,
+          delete=True)
