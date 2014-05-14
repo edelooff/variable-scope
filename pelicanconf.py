@@ -14,6 +14,13 @@ DEFAULT_PAGINATION = 4
 SUMMARY_MAX_LENGTH = 300
 TYPOGRIFY = True
 
+PLUGIN_PATH = 'pelican-plugins'
+PLUGINS = 'better_figures_and_images', 'related_posts', 'sitemap'
+
+RELATED_POSTS_MAX = 4
+RESPONSIVE_IMAGES = True
+SITEMAP = {'format': 'xml'}
+
 # Sidebar and social config settings
 GITHUB_USER = 'edelooff'
 GITHUB_SKIP_FORK = True
