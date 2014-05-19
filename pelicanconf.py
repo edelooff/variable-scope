@@ -15,11 +15,10 @@ SUMMARY_MAX_LENGTH = 300
 TYPOGRIFY = True
 
 PLUGIN_PATH = 'pelican-plugins'
-PLUGINS = 'better_figures_and_images', 'related_posts', 'sitemap'
+PLUGINS = ['better_figures_and_images', 'related_posts']
 
 RELATED_POSTS_MAX = 4
 RESPONSIVE_IMAGES = True
-SITEMAP = {'format': 'xml'}
 
 # Sidebar and social config settings
 GITHUB_USER = 'edelooff'
