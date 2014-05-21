@@ -33,8 +33,10 @@ SOCIAL = (
 # Theme and theme configuration
 THEME = 'pelican-bootstrap3'
 BOOTSTRAP_THEME = 'cosmo'
-PYGMENTS_STYLE = 'monokai'
-CUSTOM_CSS = 'static/overrides.css'
+PYGMENTS_STYLE = 'github'
+CUSTOM_CSS_LIST = (
+    'static/overrides.css',
+    'http://fonts.googleapis.com/css?family=Inconsolata:400,700')
 
 # Configure content directory and non-article content to include
 PATH = 'content'
