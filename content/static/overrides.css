@@ -32,7 +32,7 @@ article pre { font-size: 15px; }
 }
 .footnote {
   margin-bottom: .6em;
-  border-left: solid 3px #364358;
+  border-left: 5px solid #e6e6e6;
 }
 
 /* improved markup for figures */
