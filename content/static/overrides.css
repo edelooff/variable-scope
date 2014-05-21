@@ -38,12 +38,12 @@ article pre { font-size: 15px; }
 /* improved markup for figures */
 .figure {
   margin-bottom: 1em;
-  padding: .3em;
+  padding: 10px;
   background-color: #f5f5f5;
   border: 1px solid #ccc;
 }
 .figure img {
-  margin-bottom: .3em;
+  margin-bottom: .5em;
 }
 
 /* post-intro class for introductions to posts */
@@ -61,11 +61,15 @@ p.post-intro {
   padding: 3px;
 }
 
-/* Set monospace font and fix styles for highlight tables */
+/* Configure code/literal font styles and fix styles for highlight tables */
 code,
-pre {
+pre,
+tt.literal {
   font-family: "Inconsolata";
   word-wrap: normal;
+}
+tt {
+  font-weight: bold;
 }
 .highlighttable .linenos {
   width: 1%;
