@@ -50,7 +50,7 @@ def serve():
     allow_reuse_address = True
 
   os.chdir(env.deploy_path)
-  host, port = 'localhost', 8000
+  host, port = '0.0.0.0', 8000
   server = AddressReuseTCPServer(
       (host, port), SimpleHTTPServer.SimpleHTTPRequestHandler)
 
