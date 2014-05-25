@@ -20,7 +20,14 @@ While many of the popular frameworks all have their own way of doing things, sig
 General shortcomings
 ====================
 
-As much as possible, I've grouped the flaws and problems with µWeb to the sections that they're part of. These describe the presentation layer (the ``PageMaker``), the view layer (limited to the ``TemplateParser``) and the database layer (the model). Also in a section of its own is the standalone/debugging server. However, there are a few flaws in the foundation of µWeb that don't fit any of these sections. These design flaws will be discussed in this section.
+As much as possible, I've grouped the flaws and problems of the µWeb framework into a small number of sections. These align roughly with the *model/view/presenter* pattern that µWeb follows, including one for the debugging server:
+
+- The template system;
+- The presentation layer;
+- The database interaction layer;
+- The standalone / debugging server.
+
+In addition to these sections, there are a number of flaws in the foundation of µWeb itself. They don't fit any of these sections very well, so they go in this fifth section, *general*.
 
 
 µWeb is not WSGI-compliant
@@ -50,14 +57,14 @@ There is no way to attach middleware
 
 There is no convenient way of adding functionality to µWeb applications like one would add `WSGI middleware`_ to an application. There is no easily-accessible or documented way to add anything to the application before it starts, so the best that can be done is modifying the application while requests are processed.
 
-There is a semi-persistent storage system available on the PageMaker, but installing middleware into this store has its own problems. Because a new PageMaker is instantiated for each request, there is no knowledge of whether the middleware has been installed prior. Installation and configuration of the middleware will have to be performed (or skipped) before every request. This can add significant load time to the request, but also means that middleware cannot act on whatever happened prior to that point in the code. Middleware that deals with exceptions (like Werkzeug's excellent `debugger middleware`__) is particularly affected by this.
+There is a semi-persistent storage system available on the ``PageMaker``, but installing middleware into this store has its own problems. Because a new ``PageMaker`` is instantiated for each request, there is no knowledge of whether the middleware has been installed prior. Installation and configuration of the middleware will have to be performed (or skipped) before every request. This can add significant load time to the request, but also means that middleware cannot act on whatever happened prior to that point in the code. Middleware that deals with exceptions (like Werkzeug's excellent `debugger middleware`__) is particularly affected by this.
 
 __ `werkzeug debugger middleware`_
 
 In addition, because mod_python is embedded in Apache (compared to running a WSGI daemon separate to Apache), its process life is governed by the MaxRequestsPerChild_ directive. If this is set to a non-zero value, there will be restarts of the µWeb application, which will require re-installation of the middleware, and causes other unpleasant performance  characteristics.
 
 
-µWeb Templates
+µWeb templates
 ==============
 
 µWeb's template language contains the basics required of a useful template language. However, there are a number of missing features, inconsistencies and flawed behaviors that make it cumbersome to use for complex applications.
@@ -98,7 +105,7 @@ Accessing a dictionary, list or other object that has data tucked away in its at
 #. if there is not, check if there is an attribute called *bar* on *foo*;
 #. if there is not, raise ``TemplateKeyError`` (for printing, this causes the tag definition to be returned).
 
-Aside from the syntax that's very un-Python (the dot would have been a better operator for this), the retrieval mechanism causes problems if 'bar' exists as an item while the attribute is desired. The solution within the current system is to define a tag function that returns a closure to return the provided attribute:
+Aside from the syntax that's very unlike Python (the dot would have been a better operator for this), the retrieval mechanism causes problems if 'bar' exists as an item while the attribute is desired. The solution within the current system is to define a tag function that returns a closure to return the provided attribute:
 
 .. code-block:: python
 
@@ -216,6 +223,8 @@ The official documentation works around this limitation by having the presenter 
             [subject:content|raw]
         </div>
     [footer]
+
+While code examples and body text that looks like a tag might not be very common, the fact that they cannot be expressed without roundabout solutions is quite annoying. This will become especially problematic when undefined template variables are handled in a stricter manner.
 
 
 No support for comments
