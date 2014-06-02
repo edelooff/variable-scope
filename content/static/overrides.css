@@ -6,9 +6,14 @@ article pre { font-size: 15px; }
 .tag-2 { font-size: 10pt; }
 .tag-4 { font-size: 8pt; }
 
+/* With changed body font size, the 4th heading needs some attention */
+article h4 {
+  margin: 20px 0 9px;
+}
+
 /* Spruce up the otherwise black-white theme a tiny bit */
 .navbar-default {
-  background-color: #364358;
+  background-color: #426294;
 }
 
 /* Prevent wrapping of headings in sidebar at widths < 1100px */
