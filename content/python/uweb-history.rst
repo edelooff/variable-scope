@@ -2,11 +2,11 @@ Reflection and introspection: µWeb in review
 ############################################
 
 :date: 2014/05/07 16:45
-:tags: Python, μWeb, not-invented-here
+:tags: Python, µWeb, not-invented-here
 
 .. class:: post-intro
 
-    This is the first part of a series that looks back on previous projects. There is a lot to learn from looking critically at ourselves, both admitting mistakes and acknowledging achievements. The first project will be μWeb, and will likely take up more than one installment. The foundations for this were laid in 2009, and that's where the story starts.
+    This is the first part of a series that looks back on previous projects. There is a lot to learn from looking critically at ourselves, both admitting mistakes and acknowledging achievements. The first project will be µWeb, and will likely take up more than one installment. The foundations for this were laid in 2009, and that's where the story starts.
 
 During my time at Google, even working on the operations (hardware) side, there was a good bit of software involved. We made small scripts and applications that made everyday life go better and smoother. The tool of the trade was Python, and I quickly developed a strong liking for it. My fondness for it turned out to be infectious and my partner in programming developed a similar preference. To be fair, coming from a PHP_ background, what was there *not* to like...
 
@@ -35,7 +35,7 @@ __ `Python webservers`_
 
 We ended up writing a few simple \``Hello World'' test applications and getting a feel for the complexity and relative performance of the various options. CGI and fastCGI were both out immediately for reasons of performance and being thoroughly unpleasant to work with. The real choice was between ``mod_wsgi`` and ``mod_python``. At the time the WSGI specification didn't mean much, and the documentation for ``mod_python`` provided significantly more handholds. We chose to base our application-to-be on ``mod_python``. The documentation gave us a quick start and in the simple comparisons we ran, performance seemed to favor it.
 
-In hindsight, this decision was a significant misstep, though it seemed well reasoned at the time. Building an application on top of the 'wrong' platform is unfortunate; but building a framework on top of the wrong foundation brings a whole host of problems. Two obvious ones are that μWeb will only run on top of Apache, and is unable to leverage `modern lightweight and fast WSGI daemons`__. Another is that all sorts of WSGI middleware is unavailable, forcing reimplementation or recreation of many existing tools and features.
+In hindsight, this decision was a significant misstep, though it seemed well reasoned at the time. Building an application on top of the 'wrong' platform is unfortunate; but building a framework on top of the wrong foundation brings a whole host of problems. Two obvious ones are that µWeb will only run on top of Apache, and is unable to leverage `modern lightweight and fast WSGI daemons`__. Another is that all sorts of WSGI middleware is unavailable, forcing reimplementation or recreation of many existing tools and features.
 
 __ `WSGI webservers`_
 
@@ -50,19 +50,19 @@ One way to express the complexity of a function is by counting the number of dif
 
 This complexity made the function very difficult to reason about and to grow the program in an effective manner. Aside from that, it made it almost impossible to test exhaustively. Both were strong indicators that this code should be refactored, and more than a little ironic for an application that tries to highlight bad coding style. We didn't tackle it at that time though; the application provided us with the desired output and we left it at that.
 
-The first μWeb
+The first µWeb
 ==============
 
 For most of a year, the pylint-result-viewer project was left untouched and other simple web projects were created in a similar bare-bones fashion. In March of 2010, things moved forward again and the ``uweb`` module made its first appearance in our software repository.
 
-This module provided a dispatch function much like the current μWeb URL dispatcher. The ``mod_python`` :py:`handler()` function defined a list of 2-tuples with path patterns and methods to call. These were presented together with the request and the ``PageMaker`` class on which the methods would be called.
+This module provided a dispatch function much like the current µWeb URL dispatcher. The ``mod_python`` :py:`handler()` function defined a list of 2-tuples with path patterns and methods to call. These were presented together with the request and the ``PageMaker`` class on which the methods would be called.
 
-The mentioned ``PageMaker`` is the progenitor of the current-day :py:`class uweb.PageMaker`, though only in name. At the time, it was not actually part of the ``uweb`` module, but recreated in each application that used the route dispatching provided by μWeb. Over the following months, the codebase for μWeb was slowly grown and refactored, moving more of the functionality we needed for multiple projects into the core of the module.
+The mentioned ``PageMaker`` is the progenitor of the current-day :py:`class uweb.PageMaker`, though only in name. At the time, it was not actually part of the ``uweb`` module, but recreated in each application that used the route dispatching provided by µWeb. Over the following months, the codebase for µWeb was slowly grown and refactored, moving more of the functionality we needed for multiple projects into the core of the module.
 
 Development history of the template parser
 ==========================================
 
-The initial version of what has become μWeb’s template parser was created sometime before March 2009. At this stage it would load a template file from disk, read the contents into a string and iteratively replace template tags with the intended content. We had a few reasons to create our own template parser:
+The initial version of what has become µWeb's template parser was created sometime before March 2009. At this stage it would load a template file from disk, read the contents into a string and iteratively replace template tags with the intended content. We had a few reasons to create our own template parser:
 
 #. `Django templates`_ and Jinja_ (the other template engines we had looked at) had a significant number of dependencies and perceived code bloat. We wanted something more minimal in code size;
 #. Writing our own code would create a product more tailored to our needs;
@@ -78,10 +78,10 @@ Originally, it was an iterative string-replace system where each of the provided
 
 In the same development sprint, functions were added to the parser. This allowed for transformations to the inserted text other than basic HTML-escaping. This was then expanded to allow repeated calls to functions. There was no API for adding custom functions yet, though it was possible to add them to the module-global dictionary of template functions and use them that way.
 
-Modern μWeb in review
+Modern µWeb in review
 =====================
 
-Following this review of what happened before the release and the tracked history, the next installment will provide an analysis of the stronger and weaker aspects of μWeb as it exists today.
+Following this review of what happened before the release and the tracked history, the next installment will provide an analysis of the stronger and weaker aspects of µWeb as it exists today.
 
 ..  _Cyclomatic complexity: http://en.wikipedia.org/wiki/Cyclomatic_complexity
 ..  _Django: https://www.djangoproject.com/
