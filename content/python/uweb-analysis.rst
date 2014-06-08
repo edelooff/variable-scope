@@ -203,7 +203,7 @@ Shortcomings like these mean that templates end up being very verbose and diffic
 No way to suppress template processing
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-There is no way to prevent interpretation of template syntax. This means that printing a word between brackets will be impossible if that word happens to be the name of a template variable. It also means that template syntax examples cannot be embedded into a template. 
+There is no way to prevent interpretation of template syntax. This means that printing a word between brackets will be impossible if that word happens to be the name of a template variable. It also means that template syntax examples cannot be embedded into a template.
 
 The official documentation works around this limitation by having the presenter place the contents of a static template example file into the general documentation template. Simplified for brevity, the presenter code and template look like this:
 
@@ -231,6 +231,12 @@ No support for comments
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 Similarly, there is no way to indicate either line of block-style comments. This means that it's not possible to quickly and non-destructively disable pieces of template. Without support for comments, disabling parts of a template can be done by temporarily deleting the relevant lines or wrap them in an always-False conditional block. However, since the block inside the conditional is still parsed, there is no allowance for bad syntax inside these faux-comments.
+
+
+To be continued
+===============
+
+The review of µWeb continues and is concluded in `part two`_.
 
 
 Appendix A: Lines of code in µWeb
@@ -324,6 +330,7 @@ Footnotes & References
 ..  _mod_python: http://modpython.org/
 ..  _mod_python google trend: http://www.google.com/trends/explore#q=mod_python,WSGI,mod_wsgi
 ..  _paste: http://pythonpaste.org/
+..  _part two: {filename}uweb-analysis_cont.rst
 ..  _previous post: {filename}uweb-history.rst
 ..  _pylint: http://pylint.org/
 ..  _pyramid: http://www.pylonsproject.org/

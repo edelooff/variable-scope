@@ -1,9 +1,12 @@
-Reflection and introspection: an analysis of µWeb (continued)
-#############################################################
+Reflection and introspection: an analysis of µWeb (part 2)
+##########################################################
 
 :date: 2014/06/08
 :tags: Python, µWeb, not-invented-here
 
+In the `previous post`__ we reviewed the overall design of µWeb and dove deep into the provided template language. We will continue where we left off and cover the remaining parts of the system: the presenter, the model and the application server.
+
+__ `previous post`_
 
 Presentation layer / Pagemaker
 ==============================
@@ -28,7 +31,7 @@ While route matching itself works fine for many frameworks, the direct coupling 
 Delegating based on request-method in µWeb
 ------------------------------------------
 
-This lack of pre-selection means that the selection must happen explicitly in the handler code, where it must then choose to delegate this to separate methods for separate content, or combine all the possible responses in one large method body. In addition, handlers that should only respond to a very narrow selection must actively raise errors, rather than allow the framework to handle the situation where no match for the route exists:
+This lack of pre-selection means that the selection must happen explicitly in the handler code, where it must then choose to delegate this to separate methods for separate content, or combine all the possible responses in one large method body. In addition, handlers that should only respond to a very narrow selection must actively raise errors, rather than being able to rely on the framework to handle the situation where no match for the route exists:
 
 .. code-block:: python
     :linenos: inline
@@ -367,6 +370,7 @@ Footnotes & References
 ..  _bottle: http://bottlepy.org/
 ..  _django: https://www.djangoproject.com/
 ..  _flask: http://flask.pocoo.org/
+..  _previous post: {filename}uweb-analysis.rst
 ..  _pyramid: http://www.pylonsproject.org/projects/pyramid/about
 ..  _sqlalchemy: http://www.sqlalchemy.org/
 ..  _upstart: http://upstart.ubuntu.com/cookbook/
