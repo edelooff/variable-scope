@@ -22,18 +22,21 @@ article h4 {
 }
 
 /* Bootstrap theme lacks markup for footnotes */
-.entry-content .footnote-reference,
-.entry-content .fn-backref {
+article .footnote-reference,
+article .fn-backref {
   color: #0059b3;
   border-bottom: none;
   vertical-align: top;
 }
-.entry-content .footnote-reference {
+article .footnote-reference {
   font-size: 0.7em;
   margin-left: -0.2em;
 }
-.entry-content .fn-backref {
+article .fn-backref {
   font-size: 0.8em;
+}
+.summary .footnote-reference {
+  display: none;
 }
 .footnote {
   margin-bottom: .6em;
