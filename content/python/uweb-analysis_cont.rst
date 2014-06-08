@@ -4,6 +4,7 @@ Reflection and introspection: an analysis of µWeb (continued)
 :date: 2014/06/08
 :tags: Python, µWeb, not-invented-here
 
+
 Presentation layer / Pagemaker
 ==============================
 
@@ -30,7 +31,7 @@ Delegating based on request-method in µWeb
 This lack of pre-selection means that the selection must happen explicitly in the handler code, where it must then choose to delegate this to separate methods for separate content, or combine all the possible responses in one large method body. In addition, handlers that should only respond to a very narrow selection must actively raise errors, rather than allow the framework to handle the situation where no match for the route exists:
 
 .. code-block:: python
-    :linenos: table
+    :linenos: inline
 
     class Application(uweb.PageMaker):
         def article(self, article_id_from_route):
