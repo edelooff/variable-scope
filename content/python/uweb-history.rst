@@ -1,7 +1,7 @@
 Reflection and introspection: µWeb in review
 ############################################
 
-:date: 2014/05/07 16:45
+:date: 2014-05-07
 :tags: Python, µWeb, not-invented-here
 
 .. class:: post-intro

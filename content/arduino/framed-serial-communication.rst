@@ -1,10 +1,11 @@
 Frame-by-frame serial communication
 ###################################
 
-:date: 2014/02/26 23:42
+:date: 2014-02-26
 :tags: Arduino, Serial, Hackerspace
 
 With the `hackerspace open day <http://frack.nl/wiki/Hackerspace_Open_Dag_2014>`_ coming up in a bit over a month, this is a perfect time to prepare some small projects. Something that can be completed in a few evenings, and is reasonably accessible to curious newcomers. A fellow hacker ordered a few `nRF24 wireless transceivers <http://www.nordicsemi.com/eng/Products/2.4GHz-RF/nRF24L01>`_ a while ago, and now is as good a time as any to *do* something with them.
+
 
 A little about the nRF24
 ========================

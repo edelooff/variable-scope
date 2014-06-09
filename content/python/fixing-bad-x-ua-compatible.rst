@@ -1,7 +1,7 @@
 Fixing bad value "X-UA-Compatible" with Pyramid
 ###############################################
 
-:date: 2014/03/13 00:05
+:date: 2014-03-13
 :tags: Pyramid, HTML, HTTP, Python
 
 .. role:: python(code)

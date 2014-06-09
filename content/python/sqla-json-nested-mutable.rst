@@ -1,7 +1,7 @@
 Mutation tracking in nested JSON structures using SQLAlchemy
 ############################################################
 
-:date: 2014/04/20 01:23
+:date: 2014-04-20
 :tags: Python, SQLAlchemy, JSON
 
 .. role:: py(code)

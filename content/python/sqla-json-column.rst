@@ -1,7 +1,7 @@
 Creating a JSON column type for SQLAlchemy
 ##########################################
 
-:date: 2014/04/18 21:22
+:date: 2014-04-18
 :tags: Python, SQLAlchemy, JSON
 
 .. role:: py(code)
