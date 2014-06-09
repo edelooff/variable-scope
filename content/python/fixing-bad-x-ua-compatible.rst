@@ -22,6 +22,7 @@ By default these versions of Internet Explorer will run in *Quirks mode* rather 
 
 This will instruct Internet Explorer to use a Chrome Frame if available, and if not, use the latest rendering mode available (edge). With Google having `discontinued <http://blog.chromium.org/2013/06/retiring-chrome-frame.html>`_ Chrome Frame though, it's probably best to help those users to upgrade away from older Internet Explorer versions, though that's outside the scope of this article.
 
+
 So what's the problem?
 ======================
 
@@ -30,6 +31,7 @@ There are a few problems with the meta tag approach, the most obvious being that
 Does validation really matter? The answer depends on who you ask, and the context of the question. Obviously `some <http://github.com>`_ `don't <http://techcrunch.com>`_ `mind <http://yahoo.com>`_ the lack of validation and will use this meta tag, but if validation is reasonably attainable, you should probably aim for it.
 
 Often enough during development of a site something will be not working how you want it. Validating your document for obvious syntactical errors is a good first step and verifying that a document has zero errors is a lot faster than weeding out your errors and warnings that \``couldn't possibly be the problem I'm having.''
+
 
 Providing X-UA-Compatible as header using Pyramid
 =================================================
@@ -57,6 +59,7 @@ Both of the conditionals check against the attribute or an empty string. This is
 
 Place this script with your other events, or in a file somewhere in your Pyramid project. This decorator method depends on the use of :python:`config.scan()`. More about events and how to use them can be found in the `Pyramid docs <http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/events.html>`_.
 
+
 Other concerns
 ==============
 
@@ -70,6 +73,7 @@ His first argument is a solid one. As mentioned the difference is a fraction of 
 The second argument I think is not very convincing. With content compression enabled, it's in fact likely that the header will consume more space. Pretty much every decent web server has gzip (or its less respected cousin *deflate*) compression enabled. In typical cases this will compress transmitted HTML (and thus the :code:`X-UA-Compatible` meta tag) to roughly 30% of the original size. The HTTP specification doesn't contain header compression, and TLS header compression is a `really bad idea <http://en.wikipedia.org/wiki/CRIME_(security_exploit)>`_, so the comparison is compressed HTML vs uncompressed header.
 
 Uncompressed, the header solution is 35 bytes against 64 for the meta tag. Looking at the actual *bytes-over-the-wire* number, the meta tag is good for ~22 bytes against 35 bytes for the header. 50% more bandwidth by making it a header -- yes, but the difference is marginal, likely not more than 0.1% of your page size. The decision for supplying :code:`X-UA-Compatible` as either HTTP header or meta tag depends on how you want to solve the problem you're having, not on the bandwidth differences.
+
 
 Postscript
 ==========

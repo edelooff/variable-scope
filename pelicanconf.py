@@ -15,7 +15,7 @@ SUMMARY_MAX_LENGTH = 300
 TYPOGRIFY = True
 
 PLUGIN_PATH = 'pelican-plugins'
-PLUGINS = ['better_figures_and_images', 'related_posts']
+PLUGINS = ['better_figures_and_images', 'related_posts', 'summary']
 
 RELATED_POSTS_MAX = 4
 RESPONSIVE_IMAGES = True

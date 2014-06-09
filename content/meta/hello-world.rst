@@ -16,6 +16,9 @@ Now that we have the inevitable first lines out of the way, let's move on. This 
 
 Aside from work-inspired interests, there are other programming related topics that may feature. I occasionally tinker with Arduinos (most of the code is up on `GitHub <https://github.com/edelooff>`_) and they may feature here. JavaScript, necessary evil that it is, may end up as a subject as well. I'm predicting this based on my many conversations with `herrieii <http://herrieii.nl/>`_ about JavaScript.
 
+.. PELICAN_END_SUMMARY
+
+
 Why pelican?
 ============
 
@@ -26,6 +29,7 @@ The above is not the entire truth of it, but it's definitely a big part of it. W
 I've looked at making my own blog software for quite a while now, but never got around to it; other things proved more interesting. With my recent foray into Pyramid, the thought of creating my own blog came up again. Perhaps with a document-oriented database like Mongo as a backend. It's an entertaining thought, and one that I'm sure will keep surfacing, but ultimately it's a lot of work that distracts from the main purpose of the whole exercise.
 
 When you're not making your own tools, you pick something that's available. In the Python world there's certainly no lack of `blogging software <https://wiki.python.org/moin/PythonBlogSoftware>`_ but nothing stood out as clearly *awesome*. One of the main things that bothered me was the requirement to do blogging in an online fashion. Sure, we live in a world where internet access is omnipresent and you could write partial posts offline, but being forced into a browser just to add a few words to a post? It didn't seem right, and oh, there's all these people doing something with `statically <http://techspot.zzzeek.org/>`_ `generated <http://pydanny.com/>`_ `blogs <http://doughellmann.com/2014/02/16/switching-blogging-platforms-again.html>`_.
+
 
 Static content generation
 =========================

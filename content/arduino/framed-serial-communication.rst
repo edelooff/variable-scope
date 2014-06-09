@@ -14,6 +14,9 @@ The nRF24 is a 2.4GHz wireless transceiver that is available from a large amount
 
 The `30 meter range <https://hallard.me/nrf24l01-real-life-range-test/>`_ on these I think is pretty reasonable, though it's nowhere near the 100m that most vendors claim. For those cases where you need the distance coverage, there are models around that will allow for an antenna to be connected. With a simple antenna, distances over 100m in the open field have been reported (see the references article).
 
+.. PELICAN_END_SUMMARY
+
+
 The project idea
 ================
 
@@ -28,6 +31,7 @@ There's not much of a *plan* yet on what the project should be, but I'm amused b
 
 Is this a practical way of browsing the web? Probably not, and it will certainly provide you with a very slow connection. Does it make for a fun and interesting project? Probably, hopefully not in a (too) frustrating way.
 
+
 I mentioned frames
 ==================
 
@@ -39,7 +43,7 @@ The solution is fairly easy actually, mostly because our Arduino doesn't actuall
 
     const byte frameSize = 16;
     byte frame[frameSize];
-    
+
     byte readMessage(byte messageBuffer[]) {
       // Read up to one frame of data from serial
       byte serialInput, messageLength = 0;
@@ -51,7 +55,7 @@ The solution is fairly easy actually, mostly because our Arduino doesn't actuall
       }
       return messageLength;
     }
-    
+
     bool readByte(byte &receivedByte) {
       // Read a single byte from serial or time out
       // Write data in referenced byte; return success state
@@ -63,5 +67,5 @@ The solution is fairly easy actually, mostly because our Arduino doesn't actuall
       receivedByte = Serial.read();
       return true;
     }
-    
+
 The third condition for the :code:`while` loop will be taken out for the work in the proxy. For now the sketch (GitHub: `FramedCommunicator <https://github.com/edelooff/FramedCommunicator>`_) prints the frame and its length back over the serial connection, printing line-breaks as they are received would mess up the text display.

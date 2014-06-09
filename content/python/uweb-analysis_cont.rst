@@ -26,6 +26,8 @@ While route matching itself works fine for many frameworks, the direct coupling 
 * ``accept`` headers (for content negotiation);
 * whether or not the request is an XMLHttpRequest.
 
+.. PELICAN_END_SUMMARY
+
 
 Delegating based on request-method in µWeb
 ------------------------------------------
@@ -33,7 +35,7 @@ Delegating based on request-method in µWeb
 This lack of pre-selection means that the selection must happen explicitly in the handler code, where it must then choose to delegate this to separate methods for separate content, or combine all the possible responses in one large method body. In addition, handlers that should only respond to a very narrow selection must actively raise errors, rather than being able to rely on the framework to handle the situation where no match for the route exists:
 
 .. code-block:: python
-    :linenos: inline
+    :linenos: table
 
     class Application(uweb.PageMaker):
         def article(self, article_id_from_route):

@@ -10,7 +10,9 @@ Creating a JSON column type for SQLAlchemy
 
 .. class:: post-intro
 
-    This is part one of a two-part post on storage of JSON using SQLAlchemy. This post will touch on the basics of creating a JSON column type and tracking mutability, and is mostly a rehash of the SQLAlchemy documentation. The `second post <{filename}sqla-json-nested-mutable.rst>`_ will cover the tracking of mutability in arbitrarily nested JSON structures, and goes beyond what is covered in the documentation.
+    This is part one of a two-part post on storage of JSON using SQLAlchemy. This post will touch on the basics of creating a JSON column type and tracking mutability, and is mostly a rehash of the SQLAlchemy documentation. The `second post`__ will cover the tracking of mutability in arbitrarily nested JSON structures, and goes beyond what is covered in the documentation.
+
+__ `nested mutable`_
 
 The past weeks have been pretty busy. We moved from Leeuwarden to Hoofddorp, which in and of itself went pretty smooth, but the new apartment is still very much unfinished. In between work and getting the apartment in order, there hasn't been a lot of time to spend on side projects, but this seemed interesting enough.
 
@@ -23,6 +25,9 @@ A while ago I needed to store a relatively small amount of variable-format data.
         'description': 'Information about this example object',
         'storage_location': 'Top shelf in the back',
     }
+
+.. PELICAN_END_SUMMARY
+
 
 Serializing the data
 ====================
@@ -52,6 +57,7 @@ For completeness, I've included the type definition. The highlighted line associ
         return simplejson.loads(value)
 
     mutable.MutableDict.associate_with(JsonEncodedDict)
+
 
 Using the JsonEncodedDict type
 ==============================
@@ -85,8 +91,9 @@ The following provides just that, or a starting point for something more involve
 
 With the `flexible_storage` table defined and a session created, we can start exploring the possibilities of the JSON type and the included mutation tracking.
 
+
 Adding and editing records
-++++++++++++++++++++++++++
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 We create an initial record and provide it with a name.
 
@@ -117,6 +124,7 @@ Changing the age or removing a surname will both trigger updates of the record (
     bob.data['age'] = 19
     session.commit()
 
+
 Nested mutable structures
 =========================
 
@@ -135,4 +143,8 @@ So far so good, the list was persisted to the database, much as expected. Let's 
     session.commit()
     print bob.data['interests'] # will show only ['computers']
 
-This, unfortunately, is because the change tracking of :py:`class MutableDict` only goes so far. When we alter the interests lists in place, nothing changes on the dictionary. It still contains the same reference to the same list. The latter has just grown a bit. In `the next post <{filename}sqla-json-nested-mutable.rst>`_, we'll have a look at how to track changes throughout arbitrarily nested structures.
+This, unfortunately, is because the change tracking of :py:`class MutableDict` only goes so far. When we alter the interests lists in place, nothing changes on the dictionary. It still contains the same reference to the same list. The latter has just grown a bit. In `the next post`__, we'll have a look at how to track changes throughout arbitrarily nested structures.
+
+__ `nested mutable`_
+
+.. _nested mutable: {filename}sqla-json-nested-mutable.rst

@@ -20,6 +20,9 @@ What we wanted (and perhaps expected) is behavior where changing the list marks 
 #. A means to propagate the notification of change up to the top so that it reaches the :py:`class MutableDict`.
 #. Conversion of all mutable types to the defined replacement types. Both when they are added to the existing structure, as well as on load from the database.
 
+.. PELICAN_END_SUMMARY
+
+
 Objects that track mutation
 ===========================
 
@@ -91,6 +94,7 @@ As you may have spotted in the definitions above, there are a few shortcomings i
 
 However, while the example is minimal and assumes an ideal environment in which no errors occur, it makes for a good starting point for the rest of the example.
 
+
 Propagating changes
 ===================
 
@@ -123,6 +127,7 @@ The second part we identified as important for this to work is the need to have 
         return '<%s object at 0x%0xd>' % (type(self).__name__, id(self))
 
 The parent container will now be notified of any changes to the tracked object, but there's no code yet to set the parent. We'll do that next.
+
 
 Converting mutable types
 ========================
@@ -177,6 +182,7 @@ Another way, which allows for additional tracked types and less static coding is
 
 Now that the TrackedObject has a classmethod to convert any object to a registered tracked variant, the third and last part is a matter of using it.
 
+
 All mutable types will be tracked types
 =======================================
 
@@ -225,6 +231,7 @@ Are replaced with methods that run the convert method on all the added values:
 #. The list :py:`TrackedList.extend()` method sets up a generator to convert all items, letting the original :py:`list.extend()` method process it.
 #. The :py:`TrackedDict.update()` method allows for either a dictionary or 2-tuple iterator argument, as well as additional keyword arguments. The latter themselves make up a dictionary which we process in a recursive update run. The actual updating is done by reducing the problem to a 2-tuple iterator where the value is converted, and the whole is processed by the :py:`dict.update()`.
 
+
 Extending the SQLA MutableDict
 ==============================
 
@@ -269,4 +276,4 @@ After defining the NestedMutable type, that, we define a new JSON column type. T
 
 This is when we can start using it in a table definition and edit away. Whenever a change is made anywhere in the JSON structure, the next :py:`flush()` or :py:`commit()` will trigger an UPDATE query to run on the database, storing your data.
 
-The complete and resulting code for this blog post can be found on the GitHub project: `SQLAlchemy-JSON <https://github.com/edelooff/sqlalchemy-json>`_. 
+The complete and resulting code for this blog post can be found on the GitHub project: `SQLAlchemy-JSON <https://github.com/edelooff/sqlalchemy-json>`_.

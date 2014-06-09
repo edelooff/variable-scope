@@ -14,6 +14,9 @@ __ `Appendix A: Lines of code in µWeb`_
 
 We started development of µWeb without a clear set of design goals, and a number of decisions were made with a lack of information, experience and clairvoyance (though the latter *is* a common problem). This means that the current product suffers a number of unfortunate flaws. A good few of these can be easily fixed and improved upon, but others would require rewriting major portions of the code base. While a rewrite is an option, it would take a serious effort and there are other, more complete and functional web frameworks readily available for use. For my own day to day work I've migrated to Pyramid_, which provides a simple and easy interface which contains solutions for all of the most common requirements, and is easy to extend.
 
+.. PELICAN_END_SUMMARY
+
+
 While many of the popular frameworks all have their own way of doing things, significant portions of them overlap. Whether this is because of the cross-pollination of good ideas, inspiration and collaboration, or simply because it's the best and obvious way to do it isn't relevant here. A family of broadly similar frameworks make life easier for developers as they inevitably end up working on someone else's project, which is based off of *their* favorite framework. In this post, we'll compare parts of µWeb with other frameworks (like the aforementioned Pyramid and Bottle), to illustrate the difference and how it is significant.
 
 
