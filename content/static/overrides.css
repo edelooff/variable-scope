@@ -49,9 +49,15 @@ article .fn-backref {
   padding: 10px;
   background-color: #f5f5f5;
   border: 1px solid #ccc;
+  box-sizing: content-box;
 }
 .figure img {
   margin-bottom: .5em;
+}
+.figure .legend {
+  color: #666;
+  font-size: small;
+  font-style: italic;
 }
 
 /* post-intro class for introductions to posts */
