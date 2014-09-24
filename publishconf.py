@@ -22,5 +22,6 @@ CATEGORY_FEED_ATOM = 'feeds/%s.atom.xml'
 
 DELETE_OUTPUT_DIRECTORY = True
 
+AUTHOR_SAVE_AS = 'author/{slug}'
 ARTICLE_SAVE_AS = 'posts/{slug}'
 PAGE_SAVE_AS = 'pages/{slug}'

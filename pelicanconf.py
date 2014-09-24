@@ -14,7 +14,7 @@ DEFAULT_PAGINATION = 4
 SUMMARY_MAX_LENGTH = 300
 TYPOGRIFY = True
 
-PLUGIN_PATH = 'pelican-plugins'
+PLUGIN_PATHS = ['pelican-plugins']
 PLUGINS = ['better_figures_and_images', 'related_posts', 'summary']
 
 RELATED_POSTS_MAX = 4
@@ -47,11 +47,12 @@ EXTRA_PATH_METADATA = {
 }
 FAVICON = 'favicon.ico'
 
+AUTHOR_URL = 'author/{slug}.html'
+AUTHOR_SAVE_AS = 'author/{slug}/index.html'
 ARTICLE_URL = 'posts/{slug}'
 ARTICLE_SAVE_AS = 'posts/{slug}/index.html'
 PAGE_URL = 'pages/{slug}'
 PAGE_SAVE_AS = 'pages/{slug}/index.html'
-AUTHOR_SAVE_AS = ''
 
 # Disable feed creation for development
 FEED_ALL_ATOM = None
