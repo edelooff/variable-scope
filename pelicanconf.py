@@ -14,8 +14,12 @@ DEFAULT_PAGINATION = 4
 SUMMARY_MAX_LENGTH = 300
 TYPOGRIFY = True
 
-PLUGIN_PATHS = ['pelican-plugins']
-PLUGINS = ['better_figures_and_images', 'related_posts', 'summary']
+PLUGIN_PATHS = ['custom-plugins', 'pelican-plugins']
+PLUGINS = [
+    'better_figures_and_images',
+    'extra_rst_roles',
+    'related_posts',
+    'summary']
 
 RELATED_POSTS_MAX = 4
 RESPONSIVE_IMAGES = True

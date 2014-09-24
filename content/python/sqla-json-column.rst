@@ -4,10 +4,6 @@ Creating a JSON column type for SQLAlchemy
 :date: 2014-04-18
 :tags: Python, SQLAlchemy, JSON
 
-.. role:: py(code)
-    :language: python
-    :class: inline-code
-
 .. class:: post-intro
 
     This is part one of a two-part post on storage of JSON using SQLAlchemy. This post will touch on the basics of creating a JSON column type and tracking mutability, and is mostly a rehash of the SQLAlchemy documentation. The second post will cover the tracking of mutability in arbitrarily nested JSON structures, and goes beyond what is covered in the documentation.
