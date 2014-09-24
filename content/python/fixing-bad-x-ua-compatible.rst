@@ -4,14 +4,6 @@ Fixing bad value "X-UA-Compatible" with Pyramid
 :date: 2014-03-13
 :tags: Pyramid, HTML, HTTP, Python
 
-.. role:: python(code)
-    :language: python
-    :class: inline-code
-
-.. role:: html(code)
-    :language: html
-    :class: inline-code
-
 When you're making a website for the general public, you need to support the browsers of that general public. One of the things that can make that particularly difficult is the large install-base of older versions of Internet Explorer that don't run in standards mode by default. Specifically, IE8 and 9 still have a combined market share of about `30 percent <http://thenextweb.com/insider/2014/02/01/ie11-passes-ie10-market-share-firefox-slips-bit-chrome-gains-back-share/>`_.
 
 By default these versions of Internet Explorer will run in *Quirks mode* rather than *Standards mode*. This is good for websites that were made over a decade ago and targeted IE6, but it's a disaster for modern web development because the amount of corrective CSS required is astounding. The fix is to tell them to use their *edge* rendering mode; that is, the closest they can get to actual standards. From there the path to proper behavior is manageable. Microsoft has explained how to do all of this in their `knowledge base <http://msdn.microsoft.com/en-us/library/jj676915(v=vs.85).aspx>`_, but in practice it comes down to this:
@@ -55,9 +47,9 @@ Pyramid offers an easy way to add this header to all relevant (HTML) responses. 
           'html' in (event.response.content_type or '')):
         event.response.headers['X-UA-Compatible'] = 'IE=edge,chrome=1'
 
-Both of the conditionals check against the attribute or an empty string. This is done because a client can perform a request without a :code:`user-agent` header, and in certain cases a :code:`content-type` header is not provided. Falling back to strings ensures the check fails without raising an exception for trying to iterate on :code:`None`.
+Both of the conditionals check against the attribute or an empty string. This is done because a client can perform a request without a :code:`user-agent` header, and in certain cases a :code:`content-type` header is not provided. Falling back to strings ensures the check fails without raising an exception for trying to iterate on :py:`None`.
 
-Place this script with your other events, or in a file somewhere in your Pyramid project. This decorator method depends on the use of :python:`config.scan()`. More about events and how to use them can be found in the `Pyramid docs <http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/events.html>`_.
+Place this script with your other events, or in a file somewhere in your Pyramid project. This decorator method depends on the use of :py:`config.scan()`. More about events and how to use them can be found in the `Pyramid docs <http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/events.html>`_.
 
 
 Other concerns

@@ -4,10 +4,6 @@ Mutation tracking in nested JSON structures using SQLAlchemy
 :date: 2014-04-20
 :tags: Python, SQLAlchemy, JSON
 
-.. role:: py(code)
-    :language: python
-    :class: inline-code
-
 .. class:: post-intro
 
     This is part two of a two-part post on storage of JSON using SQLAlchemy. The `first post <{filename}/python/sqla-json-column.rst>`_ covered the basics of creating a JSON column type and tracking mutations. In this post, we will continue from there to cover mutation tracking in arbitrarily nested structures.
