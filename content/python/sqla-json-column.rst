@@ -10,9 +10,7 @@ Creating a JSON column type for SQLAlchemy
 
 .. class:: post-intro
 
-    This is part one of a two-part post on storage of JSON using SQLAlchemy. This post will touch on the basics of creating a JSON column type and tracking mutability, and is mostly a rehash of the SQLAlchemy documentation. The `second post`__ will cover the tracking of mutability in arbitrarily nested JSON structures, and goes beyond what is covered in the documentation.
-
-__ `nested mutable`_
+    This is part one of a two-part post on storage of JSON using SQLAlchemy. This post will touch on the basics of creating a JSON column type and tracking mutability, and is mostly a rehash of the SQLAlchemy documentation. The second post will cover the tracking of mutability in arbitrarily nested JSON structures, and goes beyond what is covered in the documentation.
 
 The past weeks have been pretty busy. We moved from Leeuwarden to Hoofddorp, which in and of itself went pretty smooth, but the new apartment is still very much unfinished. In between work and getting the apartment in order, there hasn't been a lot of time to spend on side projects, but this seemed interesting enough.
 
