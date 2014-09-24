@@ -176,7 +176,7 @@ These issues will be resolved and explained in the next post.
 Footnotes
 =========
 
-..  [#install_aggdraw] Installing ``aggdraw`` turned out to be a small challenge. The C++-extension in the version available on PyPI seems to have a problem compiling on 64-bit systems. What worked for me (but may cause subtle problems) was prefixing CFLAGS to the build command. ``CFLAGS="-fpermissive" python setup.py install`` in my ``env/build`` directory after having ``pip install aggdraw`` fail.
+..  [#install_aggdraw] Installing ``aggdraw`` turned out to be a small challenge. The C++-extension in the version available on PyPI seems to have a problem compiling on 64-bit systems. What worked for me (but may cause subtle problems) was prefixing CFLAGS to the build command. :bash:`CFLAGS="-fpermissive" python setup.py install` in my :code:`env/build` directory after having :bash:`pip install aggdraw` fail.
 
 ..  _aggdraw: http://effbot.org/zone/pythondoc-aggdraw.htm
 ..  _anti-grain geometry: http://antigrain.com/about/index.html
