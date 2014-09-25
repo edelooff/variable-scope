@@ -1,19 +1,18 @@
 Hexagon tilings with Python
 ###########################
 
-:date: 2014-09-24
+:date: 2014-09-25
 :tags: Python, drawing, PIL, aggdraw
-:status: draft
 
-A few days ago I ended up on a website (I forgot where) which featured a very nice and subtle square tiling on the background of the page. Now, this is in itself is not astonishing, plenty of folks and businesses out there will present you with all sorts of tessellated backgrounds. However, it got me thinking about doing some tiling background myself. Not because I particularly need one (it certainly wouldn't look right on this blog), but just to experiment. To make things slightly more interesting I opted for another shape: *the hexagon*.
+A few days ago I ended up on a website (I forget where) which featured a very nice and subtle square tiling on the background of the page. Now, this is in itself is not astonishing, plenty of folks and businesses out there will present you with all sorts of tessellated backgrounds. However, it got me thinking about doing some tiling background myself. Not because I particularly need one (it certainly wouldn't look right on this blog), but just to experiment. To make things slightly more interesting I opted for another shape: *the hexagon*.
 
-A hexagon is a polygon with six edges and six vertices. The *regular* hexagon is equilateral and all internal angles are 120°. It is also one of three polygons with which you can create a `regular tiling`_. That is, using only hexagons you can fill plane without any gaps or overlaps. The other two regular shapes with which this can be done are the square and the equilateral triangle.
+A hexagon is a polygon with six edges and six vertices. The *regular* hexagon is equilateral and all internal angles are 120°. It is also one of three polygons with which you can create a `regular tiling`_. That is, using only hexagons you can fill a plane without any gaps or overlaps. The other two regular shapes with which this can be done are the square and the equilateral triangle.
 
 
 Drawing a hexagon with PIL
 ==========================
 
-The first goal to achieving a tiling is to create a single hexagon. The first stop when it comes to images in Python is the *Python Imaging Library* (better known as PIL_). Using this library and knowledge of basic math, the following code will generate a single hexagon:
+The first step towards tiling hexagons is to create a single hexagon. The first stop when it comes to images in Python is the *Python Imaging Library* (better known as PIL_). Using this library and knowledge of basic math, the following code will generate a single hexagon:
 
 .. code-block:: python
     :linenos: table
@@ -36,6 +35,8 @@ The first goal to achieving a tiling is to create a single hexagon. The first st
       draw.polygon(list(hexagon), outline='black', fill='red')
       image.show()
 
+.. PELICAN_END_SUMMARY
+
 .. figure:: {filename}/images/hexagon-tiling/hexagon_pil.png
     :align: right
     :alt: A hexagon with a zoomed section showing aliasing on the slanted edges
@@ -57,7 +58,7 @@ However, as shown, the resulting image is not very visually appealing. The slant
 Drawing a hexagon with aggdraw
 ==============================
 
-Aggdraw_ is an extension to PIL based on the `Anti-Grain Geometry`_ library which provides anti-aliasing and alpha compositing. After installing aggdraw [#install_aggdraw]_ and making few minor adjustments to the script, the resulting hexagon is perfectly smooth along the edges:
+Aggdraw_ is an extension to PIL based on the `Anti-Grain Geometry`_ library which provides anti-aliasing and alpha compositing. After installing aggdraw [#install_aggdraw]_ and making a few minor adjustments to the script, the resulting hexagon is perfectly smooth along the edges:
 
 .. code-block:: python
     :linenos: table
@@ -162,7 +163,7 @@ To be able to see the individual hexagons, each rows is drawn in an increasingly
 Further steps
 =============
 
-After this short session we can now fill a canvas with a neatly arrange grid of hexagons. Both the image and the hexagons themselves can be of any size, and because of anti-aliasing provided by ``aggdraw``, there are no grainy edges to be seen anywhere.
+After this short session we can now fill a canvas with a neatly arranged grid of hexagons. Both the image and the hexagons themselves can be of any size, and because of anti-aliasing provided by ``aggdraw``, there are no grainy edges to be seen anywhere.
 
 However, a number of things are still to be improved:
 
