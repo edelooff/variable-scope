@@ -138,7 +138,7 @@ The code to generate the tiling remains roughly the but now uses the :py:`create
 How many rows to fill a canvas
 ------------------------------
 
-Put simply, we need a convenience function to determine the number of rows that fit the created canvas. The canvas creation function knows the number of pattern repeats that fit, from which we derive the number of rows, but placing it in there makes that function do multiple different things, which is not ideal. Adding a method to the :py:`class HexagonGenerator` that tells us how many rows fit in a given height seems like a decent alternative.
+Put simply, we need a convenience function to determine the number of rows that fit the created canvas. The canvas creation function knows the number of pattern repetitions that fit, from which we can derive the number of rows needed to fill the image. However, it would add a secondary purpose to that function, which is not ideal. Adding a method to the :py:`class HexagonGenerator` that returns how many rows fit a given dimension seems like the way forward:
 
 .. code-block:: python
     :linenos: table
