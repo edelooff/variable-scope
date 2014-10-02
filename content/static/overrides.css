@@ -11,10 +11,10 @@ article h4 {
   margin: 20px 0 9px;
 }
 
-/* Spruce up the otherwise black-white theme a tiny bit */
+/* Spruce up the otherwise black-white theme a bit */
 .navbar-default {
   background-color: #426294;
-  background-image: url(hexagons-varscope.png);
+  background-image: url(hex-dark-blue.png);
 }
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus,
