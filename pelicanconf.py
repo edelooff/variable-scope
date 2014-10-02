@@ -7,6 +7,7 @@ SITENAME = u'Variable Scope'
 TIMEZONE = 'Europe/Amsterdam'
 CC_LICENSE = 'CC-BY-SA'
 CC_ATTR_MARKUP = False
+DEFAULT_DATE = 'fs'
 
 DISPLAY_CATEGORIES_ON_MENU = False
 DISPLAY_TAGS_ON_SIDEBAR = True

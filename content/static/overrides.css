@@ -14,6 +14,13 @@ article h4 {
 /* Spruce up the otherwise black-white theme a tiny bit */
 .navbar-default {
   background-color: #426294;
+  background-image: url(hexagons-varscope.png);
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus,
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 /* Prevent wrapping of headings in sidebar at widths < 1100px */

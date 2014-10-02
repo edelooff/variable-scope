@@ -142,9 +142,9 @@ A *row* has hexagons all at the exact same height, and every odd-numbered row is
       draw = Draw(image)
       hexagon_generator = HexagonGenerator(40)
       for row in range(7):
+        color = row * 10, row * 20, row * 30
         for col in range(2):
           hexagon = hexagon_generator(row, col)
-          color = row * 10, row * 20, row * 30
           draw.polygon(list(hexagon), Brush(color))
       draw.flush()
       image.show()
