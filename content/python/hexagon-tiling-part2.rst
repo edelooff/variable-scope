@@ -4,7 +4,7 @@ Hexagon tilings with Python - Part 2
 :date: 2014-10-1
 :tags: Python, drawing, PIL, aggdraw
 
-In part one, we covered the drawing of smooth, ant-aliased hexagons in a grid-like fashion. In this post, we will extend that beginning into a program to draw hexagon fills that can be used for tiled background. The key improvements that were identified in the previous post:
+In part one, we covered the drawing of smooth, anti-aliased hexagons in a grid-like fashion. In this post, we will extend that beginning into a program to draw hexagon fills that can be used for a tiled background. The key improvements that were identified in the previous post:
 
 1. Canvas sizing and shape wrapping
 2. Color wrapping around the edges
@@ -13,7 +13,7 @@ In part one, we covered the drawing of smooth, ant-aliased hexagons in a grid-li
 Canvas sizing and shape wrapping
 ================================
 
-To be able to use the generated image as a tiled background, the shapes must wrap from left to right. That is, if the left edge of a row shows a pentagon that lacks a small fraction, the right edge of the row should end with that fraction.
+To be able to use the generated image as a tiled background, the shapes must wrap from left to right. That is, if a row contains a hexagon that is cut off on the left edge, the portion that was cut off should be the end of that row on the right edge, and vice-versa.
 
 This is a complex way of saying that the width of the image must be an exact multiple of the pattern size. The pattern in this case is the smallest shape from which a repeating pattern can be constructed. For the hexagons generator we have, this pattern is one column wide and two rows tall.
 
@@ -157,7 +157,8 @@ Wrapping stage one: horizontal
 
 To create an image that can be tiled, the empty sections along the left edge need to be of the same colors as the empty sections along the right. And the same goes for the top and bottom. Obviously, we cannot do this by simply relying on luck when we get a random color.
 
-The simplest solution is to generate a full row's worth of colors ahead of time. Iterating over this array and painting hexagons with the colors from it allows filling all the hexagons from the left edge out. Painting the polygon on the right edge can then be done with the 0th element from the array, making it a match with the partial one on the left edge.
+The simplest solution is to generate a full row's worth of colors ahead of time.
+Coloring the hexagons in the row is then a matter of iterating over this list of colors, painting hexagons from left to right. After all colors in the list are used, the hexagon that sits on (or over) the right edge is drawn using the color from the 0th position of the list. This way, the two will always match up:
 
 .. code-block:: python
 
@@ -179,9 +180,9 @@ The special case can be made part of the general loop if the :py:`colors` list i
 Wrapping stage two: vertical
 ----------------------------
 
-In a sense, the vertical wrapping is even easier than the horizontal. After performing the number of iterations as instructed by the :py:`HexagonGenerator.rows()` method, the last row consists of polygons that are cut in half by the lower edge of the canvas. And because of Python's variable scope, the list of colors that was created and used for that last row is still available after the main drawing loop has concluded.
+The vertical wrapping is conceptually similar to the horizontal wrapping, but requires a slightly different approach. After performing the number of iterations as instructed by the :py:`HexagonGenerator.rows()` method, the last row consists of polygons that are cut in half by the lower edge of the canvas. Because of Python's variable scope behavior [#scope]_, the list of colors that was created and used for that last row is still available after the main drawing loop has concluded.
 
-All we need to do to achieve color wrapping is drawing hexagons along the top half-row, which is easily done by proving :py:`row=-1`.
+All we need to do to achieve color wrapping is to draw hexagons along the top half-row, which is easily done by proving :py:`row=-1`.
 
 
 Putting it all together
@@ -214,8 +215,16 @@ Results!
 
     The fruits of our labor, a tiling with no discernible seam.
 
-The image shown just above here is the result of a slightly modified version of the script shows above here. There are 5 pattern repetitions of hexagons with an edge size of 5px each. The resulting base image is 75x77 pixels, and this is repeated twice vertically and nine times horizontally. The result of that tiling makes for a final image that is 675x154 pixels large. Because of the fairly small pattern size, the repetition is easily spotted, but even so there are no clear seams.
+The image shown just above here is the result of a slightly modified version of the last version of our drawing script. There are 5 pattern repetitions of hexagons with an edge size of 5px each. The resulting base image is 75x77 pixels, and this is repeated twice vertically and nine times horizontally. The result of that tiling makes for a final image that is 675x154 pixels large. Because of the fairly small pattern size, the repetition is easily spotted, but even so there are no clear seams.
 
-The random coloring for this image will be part for a next post, as this one is running on the long end already. A full copy of the code to generate hexagon tilings is available `as a Gist`__. Licensing wise I consider this to be a contribution to the public domain, but I would like to hear about it if this has been useful or interesting for you in any way.
+The random coloring for this image will be part for a next post, as this one is getting on the long side already. A full copy of the code to generate hexagon tilings is available `as a Gist`__. Licensing wise I consider this to be a contribution to the public domain, but I would like to hear about it if this has been useful or interesting for you in any way.
 
-__ https://gist.github.com/edelooff/2fd76fa7980bb10427cd
+__ `hexagon gist`_
+
+Footnotes
+=========
+
+.. [#scope] The creative use of Python's variable scoping here is grounded in the lack of `block scope`_, making the variables defined in a :py:`for`-block available to the code that follows it. If  the preceding loop is not executed at all (because of an empty iterator), a :py:`NameError` will be raised. This will happen only for an image of zero size, which is not something we expect to create.
+
+.. _block scope: http://en.wikipedia.org/wiki/Scope_(computer_science)#Block_scope
+.. _hexagon gist: https://gist.github.com/edelooff/2fd76fa7980bb10427cd
