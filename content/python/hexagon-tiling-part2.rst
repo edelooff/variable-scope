@@ -132,7 +132,7 @@ Using this random color function we get some.. *colorful* results:
 
     One of the better results after a dozen runs. Random coloring is a nice idea, but something to restrict the range of hue or saturation would greatly improve the result.
 
-The code to generate the tiling remains roughly the but now uses the :py:`create_canvas()` function that we defined in the previous section. The number of rows to draw is still very much a *known* value, something we shall deal with first.
+The code to generate the tiling remains roughly the same, but now uses the :py:`create_canvas()` function that we defined in the previous section. The number of rows to draw is still very much a *known* value, something we shall deal with first.
 
 
 How many rows to fill a canvas
