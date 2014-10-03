@@ -21,27 +21,18 @@ def install_deps():
 
 
 @task
-def clean():
-  local('rm -rf {deploy_path}'.format(**env))
-  local('mkdir {deploy_path}'.format(**env))
-
-
-@task
 def build():
-  clean()
-  local('pelican -s pelicanconf.py')
+  local('pelican -ds pelicanconf.py')
 
 
 @task
 def preview():
-  clean()
-  local('pelican -s publishconf.py')
+  local('pelican -ds publishconf.py')
 
 
 @task
 def regenerate():
-  clean()
-  local('pelican -r -s pelicanconf.py')
+  local('pelican -drs pelicanconf.py')
 
 
 @task
