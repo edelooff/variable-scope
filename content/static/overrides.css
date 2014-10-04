@@ -96,7 +96,7 @@ p.post-intro {
 code,
 pre,
 tt.literal {
-  font-family: "Inconsolata";
+  font-family: "Inconsolata" monospace;
   word-wrap: normal;
 }
 tt {
