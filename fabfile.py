@@ -1,8 +1,10 @@
 # Standard modules
 import os
+import subprocess
 import sys
 import SimpleHTTPServer
 import SocketServer
+import threading
 
 # Third-party modules
 from fabric.api import env, hide, local, task
@@ -33,6 +35,22 @@ def preview():
 @task
 def regenerate():
   local('pelican -drs pelicanconf.py')
+
+
+@task
+def reserve():
+  """Hack to spin up a continuous content generator and also serve locally."""
+  def fab_regenerate():
+    subprocess.Popen(['fab', 'regenerate']).communicate()
+
+  def fab_serve():
+    subprocess.Popen(['fab', 'serve']).communicate()
+
+  threads = [
+      threading.Thread(target=fab_regenerate),
+      threading.Thread(target=fab_serve)]
+  [thread.start() for thread in threads]
+  [thread.join() for thread in threads]
 
 
 @task
