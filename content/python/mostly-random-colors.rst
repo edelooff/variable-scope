@@ -1,8 +1,8 @@
 Creating a mostly-random color generator
 ########################################
 
+:date: 2014-10-10
 :tags: Python, random
-:status: draft
 
 .. figure:: {filename}/images/hexagon-tiling/hexagons_random_rgb.png
     :align: right
@@ -10,9 +10,9 @@ Creating a mostly-random color generator
 
     Fully randomized colors
 
-    A coloring like this may be ideal for some situations, but mostly it's too... *random*.
+    A coloring like this may be desired for some situations, but for most it's too random.
 
-In the previous two posts we've exlored how to draw hexagons and how to tile them and create images that can be seamlessly repeated. We also briefly covered coloring them using a random color generator. The coloring process itself worked fine, but many times the created tiling turned out not very visually appealing, the colors of too harsh a contrast in tone and brightness.
+In the previous two posts we've explored how to draw and tile hexagons, creating images that can be seamlessly repeated. We also briefly covered coloring them using a random color generator. The coloring process itself worked fine, but many times the created tiling turned out not very visually appealing, the colors of too harsh a contrast in tone and brightness.
 
 In this post we'll cover the creation of a mostly-random color generator. One that creates random colors within a certain fraction of the available colorspace.
 
@@ -20,11 +20,11 @@ In this post we'll cover the creation of a mostly-random color generator. One th
 Picking a color representation
 ==============================
 
-There are a different ways to represent colors in RBG colorspace, providing us with different ways in which to restrict the available portion to select random colors from:
+There are a different ways to represent colors in RGB colorspace, providing us with different ways in which to restrict the available portion to select random colors from:
 
-* *RGB*: Red, Green and Blue values -- certainly the most straightforward way
+* *RGB*: Red, Green and Blue values -- A direct representation of the intensity of each of the color components.
 * *HSV*: Hue, Saturation, Value (brightness) -- Cylindrical color mapping, common in color wheels in various graphics programs
-* *HSL*: Hue, Saturation and Lightness -- Cylindrical color mapping similar to HSV with a few different behaviors
+* *HSL*: Hue, Saturation and Lightness -- Another cylindrical color mapping, similar to HSV but with a few different behaviors which we'll discuss in a moment
 
 Any of the above could be used, and all three have potentially interesting behavior when certain values are kept constant, or only allowed to vary by a small amount. If we would like a behavior where we can restrict the *hue* of the color but have full variation in lightness and color intensity, the direct RGB mode is ruled out.
 
@@ -34,11 +34,11 @@ The choice between HSV and HSL mostly comes down to a matter of taste. Intuitive
 HSV to RGB in Python
 ====================
 
-Conveniently, Python comes with a library that does transitions between different color coordinate mappings of RGB. The colorsys_ library contains a pair of functions to convert between RGB and HSV (as well as HSL and YIQ). There is a small catch though: all inputs and outputs are floating point numbers between 0 and 1, rather than the 0-255 integers we typically see for RGB.
+Conveniently, Python comes with a library that does transitions between different color coordinate mappings of RGB. The |colorsys|_ library contains a pair of functions to convert between RGB and HSV (as well as HSL and YIQ). There is a small catch though: all inputs and outputs are floating point numbers between 0 and 1, rather than the 0-255 integers we typically see for RGB.
 
-The reason for this is simply that there is no rule that RGB has strictly 8 bits per channel. in the 90's, 16 bit color modes were common, where *red*, *green* and *blue* were represented by 5, 6, and 5 bits respectively. Digital camera's operating in RAW mode typically record 10, 12 or even 14 bit per channel worth of color information. [#raw]_
+This is simply because there is nothing restricting RGB to exactly eight bits per channel. In the 90's, 16-bit color modes were common, where *red*, *green* and *blue* were represented by 5, 6, and 5 bits respectively. And on the other end of the spectrum, digital camera RAW output typically contains 12 or 14 bits per channel worth of color information [#raw]_. This is also known as the |dynamic range|_ of the colors.
 
-PIL works with 8-bits per channel colors, so we need a pair of simple converters between the 0-255 integer and 0-1 floating point domains:
+The typical dynamic range for computer monitors, and consequently for most image formats, is the aforementioned eight bits. PIL (and with it, ``aggdraw``) accepts color channel values in an 8-bit range, so we need need to map the 0-1 floating point output to a 0-255 integer range and vice-versa.
 
 .. code-block:: python
 
@@ -60,7 +60,7 @@ PIL works with 8-bits per channel colors, so we need a pair of simple converters
 Building the randomizer
 =======================
 
-Let's build a simple randomizing function where can lock down the hue. To make the function slightly friendlier to our human inputs, we'll accept hue inputs as degrees, mimicing the color circle as commonly seen in image editing software.
+Let's build a simple randomizing function where can lock down the hue. To make the function slightly friendlier to our human inputs, we'll accept hue inputs as degrees, mimicking the color circle as commonly seen in image editing software.
 
 .. code-block:: python
 
@@ -75,7 +75,7 @@ Let's build a simple randomizing function where can lock down the hue. To make t
       return map(to_eightbit, colorsys.hsv_to_rgb(hue, sat, val))
 
     random_color(hue=0)    # something red:  [186, 98, 98]
-    random_color(sat=0)    # something grey: [134, 134, 134]
+    random_color(sat=0)    # something gray: [134, 134, 134]
     random_color(sat=1, val=1) # max chroma: [36, 0, 255]
 
 
@@ -85,7 +85,7 @@ Let's build a simple randomizing function where can lock down the hue. To make t
 
     :py:`random_color(hue=0)`
 
-    A sample tiling with static hue and variable saturation & brightness.
+    Coloring of uniform hue and variable saturation & brightness.
 
 
 Random numbers in a restricted range
@@ -105,11 +105,11 @@ The following snippet defines a function that returns functions which can be use
         return lambda: random.random() * (stop - start) + start
       return lambda: value
 
-    >>> rand = channel_picker((0.4, 0.6))
-    >>> [rand() for _ in range(3)]  #
+    >>> rand = channel_picker((0.4, 0.6))  # Randoms in given range
+    >>> [rand() for _ in range(3)]
     [0.4785833631009269, 0.4449304246805125, 0.5504729222480945]
-    >>> rand = channel_picker(0.76)
-    >>> [rand() for _ in range(3)]  #
+    >>> rand = channel_picker(0.76)        # Constant values
+    >>> [rand() for _ in range(3)]
     [0.76, 0.76, 0.76]
 
 
@@ -153,10 +153,69 @@ The :py:`channel_picker()` as it's implemented above needs to be adapted to work
         scale_max = float(scale_max)
         return lambda num: num / scale_max
 
+Upon initialization, the class sets up the three functions to return the *hue*, *saturation* and *value* components of the color. These can be completely random, within a given range, or fixed. The code using them isn't aware and doesn't care, as long as the numbers are in the right range. [#range_looping]_
+
+When the generator is used by calling the instance, a (possibly not quite) random value is taken from each of the *hue*, *saturation* and *value* generators. This is then converted to RGB, scaled to fit an 8-bit integer range, and returned.
+
+
+Examples in blue
+================
+
+In the last code example, we update the tiling creator from the `last post`_ to use an externally supplied random color generator, and supply it with instances of the HsvColorGenerator. We run the creator function several times, each time with a different random color generator. We start off with a grayscale variant and increase color and tint ranges with every iteration.
+
+.. code-block:: python
+    :linenos: table
+
+    def draw_tiling(repetitions, edge_length, color_func):
+      hexagon = HexagonGenerator(edge_length)
+      canvas = create_canvas(hexagon.pattern_size, repetitions)
+      draw = Draw(canvas)
+      for row in range(hexagon.rows(canvas.size[1])):
+        colors = [color_func() for _ in range(repetitions)]
+        for column in range(repetitions + 1):
+          color = colors[column % repetitions]
+          draw.polygon(list(hexagon(row, column)), Brush(color))
+      for column, color in enumerate(colors):
+        draw.polygon(list(hexagon(-1, column)), Brush(color))
+      draw.flush()
+      canvas.show()
+
+    def random_blues():
+      # Plain grayscale to start off with
+      yield HsvColorGenerator(saturation=0, value=(.1, .9))
+      # Monochrome blue with brightness variation
+      yield HsvColorGenerator(hue=220, saturation=.4, value=(.1, .9))
+      # Wider chroma with a fixed saturation
+      yield HsvColorGenerator(hue=(180, 220), value=(.1, .9), saturation=.4)
+      # Removed fixed saturation for a more lively image
+      yield HsvColorGenerator(hue=(180, 220), value=(.1, .9))
+
+    def main():
+      for color_func in random_blues():
+        draw_tiling(12, 5, func)
+
+.. figure:: {filename}/images/hexagon-tiling/hexagon_blues.png
+    :align: right
+    :alt: Example results of the defined color generators
+
+    Some results of the above script.
+
+And that is it for this short series on creating hexagon tilings and coloring them. `An idea`__ that got sparked by some random website, explored on a delayed and detoured train ride home, and put into words over the span of a fortnight. And it resulted in a less boring blog theme to boot! If you've made something similar, more awesome, derived from this, or a suggestion on where to take this, let me know with a comment.
+
+__ `drawing hexagons`_
 
 Footnotes
 =========
 
-.. [#raw] blablalba
+.. [#raw] The actual bit-depth depends on the make and model of the camera. Most camera's will in addition share some tonal information across pixels (one blue, one red and two green pixel sensors for four RGB output pixels), but even so, the range is significantly larger than eight bits. For more: `raw image format`_
+.. [#range_looping] Actually, the ranges do not strictly have to be in the 0-1 domain. The converter functions in ``colorsys`` seem happy enough to receive any number, and will do *something* with it. For hue it goes around the `color wheel`_, causing :py:`hue=(300, 400)` to result in purples and reds to be generated. The behavior of saturation and value are significantly more erratic, but may be interesting to play with nonetheless.
+
+.. |colorsys| replace:: ``colorsys``
+.. |dynamic range| replace:: *dynamic range*
 
 .. _colorsys: https://docs.python.org/2/library/colorsys.html
+.. _color wheel: http://en.wikipedia.org/wiki/Color_wheel
+.. _drawing hexagons: {filename}/python/hexagon-tiling.rst
+.. _dynamic range: http://en.wikipedia.org/wiki/Dynamic_range#Photography
+.. _last post: {filename}/python/hexagon-tiling-part2.rst
+.. _raw image format: http://en.wikipedia.org/wiki/Raw_image_format#Sensor_image_data
