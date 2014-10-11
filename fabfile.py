@@ -1,8 +1,10 @@
 # Standard modules
 import os
+import subprocess
 import sys
 import SimpleHTTPServer
 import SocketServer
+import threading
 
 # Third-party modules
 from fabric.api import env, hide, local, task
@@ -21,27 +23,34 @@ def install_deps():
 
 
 @task
-def clean():
-  local('rm -rf {deploy_path}'.format(**env))
-  local('mkdir {deploy_path}'.format(**env))
-
-
-@task
 def build():
-  clean()
-  local('pelican -s pelicanconf.py')
+  local('pelican -ds pelicanconf.py')
 
 
 @task
 def preview():
-  clean()
-  local('pelican -s publishconf.py')
+  local('pelican -ds publishconf.py')
 
 
 @task
 def regenerate():
-  clean()
-  local('pelican -r -s pelicanconf.py')
+  local('pelican -drs pelicanconf.py')
+
+
+@task
+def reserve():
+  """Hack to spin up a continuous content generator and also serve locally."""
+  def fab_regenerate():
+    subprocess.Popen(['fab', 'regenerate']).communicate()
+
+  def fab_serve():
+    subprocess.Popen(['fab', 'serve']).communicate()
+
+  threads = [
+      threading.Thread(target=fab_regenerate),
+      threading.Thread(target=fab_serve)]
+  [thread.start() for thread in threads]
+  [thread.join() for thread in threads]
 
 
 @task

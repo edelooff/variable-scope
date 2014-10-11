@@ -13,8 +13,7 @@ article h4 {
 
 /* Spruce up the otherwise black-white theme a bit */
 .navbar-default {
-  background-color: #426294;
-  background-image: url(hex-dark-blue.png);
+  background: url(hex-dark-blue.png) #426294;
 }
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus,
@@ -96,7 +95,7 @@ p.post-intro {
 code,
 pre,
 tt.literal {
-  font-family: "Inconsolata";
+  font-family: "Inconsolata" monospace;
   word-wrap: normal;
 }
 tt {
