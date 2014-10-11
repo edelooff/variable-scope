@@ -20,10 +20,10 @@ In this post we'll cover the creation of a mostly-random color generator. One th
 Picking a color representation
 ==============================
 
-There are a different ways to represent colors in RGB colorspace, providing us with different ways in which to restrict the available portion to select random colors from:
+There are a few different ways to describe colors in RGB colorspace, providing us with different approaches on how to restrict the available portion to select colors randomly from:
 
 * *RGB*: Red, Green and Blue values -- A direct representation of the intensity of each of the color components.
-* *HSV*: Hue, Saturation, Value (brightness) -- Cylindrical color mapping, common in color wheels in various graphics programs
+* *HSV*: Hue, Saturation, Value (brightness) -- A cylindrical color mapping, common in color wheels in various graphics programs
 * *HSL*: Hue, Saturation and Lightness -- Another cylindrical color mapping, similar to HSV but with a few different behaviors which we'll discuss in a moment
 
 Any of the above could be used, and all three have potentially interesting behavior when certain values are kept constant, or only allowed to vary by a small amount. If we would like a behavior where we can restrict the *hue* of the color but have full variation in lightness and color intensity, the direct RGB mode is ruled out.
@@ -195,7 +195,7 @@ In the last code example, we update the tiling creator from the `last post`_ to 
         draw_tiling(12, 5, func)
 
 .. figure:: {filename}/images/hexagon-tiling/hexagon_blues.png
-    :align: right
+    :align: center
     :alt: Example results of the defined color generators
 
     Some results of the above script.
@@ -207,7 +207,7 @@ __ `drawing hexagons`_
 Footnotes
 =========
 
-.. [#raw] The actual bit-depth depends on the make and model of the camera. Most camera's will in addition share some tonal information across pixels (one blue, one red and two green pixel sensors for four RGB output pixels), but even so, the range is significantly larger than eight bits. For more: `raw image format`_
+.. [#raw] The actual bit-depth depends on the make and model of the camera. Most cameras will in addition share some tonal information across pixels (one blue, one red and two green pixel sensors for four RGB output pixels), but even so, the range is significantly larger than eight bits. For more: `raw image format`_
 .. [#range_looping] Actually, the ranges do not strictly have to be in the 0-1 domain. The converter functions in ``colorsys`` seem happy enough to receive any number, and will do *something* with it. For hue it goes around the `color wheel`_, causing :py:`hue=(300, 400)` to result in purples and reds to be generated. The behavior of saturation and value are significantly more erratic, but may be interesting to play with nonetheless.
 
 .. |colorsys| replace:: ``colorsys``
