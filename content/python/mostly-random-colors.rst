@@ -3,6 +3,7 @@ Creating a mostly-random color generator
 
 :date: 2014-10-10
 :tags: Python, random
+:status: published
 
 .. figure:: {filename}/images/hexagon-tiling/hexagons_random_rgb.png
     :align: right

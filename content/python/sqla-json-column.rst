@@ -3,6 +3,7 @@ Creating a JSON column type for SQLAlchemy
 
 :date: 2014-04-18
 :tags: Python, SQLAlchemy, JSON
+:status: published
 
 .. class:: post-intro
 

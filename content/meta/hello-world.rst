@@ -3,6 +3,7 @@ Hello world
 
 :date: 2014-02-23
 :tags: Pyramid, Pelican, Blog, Python
+:status: published
 
 .. code-block:: python
 

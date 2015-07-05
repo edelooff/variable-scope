@@ -3,6 +3,7 @@ Fixing bad value "X-UA-Compatible" with Pyramid
 
 :date: 2014-03-13
 :tags: Pyramid, HTML, HTTP, Python
+:status: published
 
 When you're making a website for the general public, you need to support the browsers of that general public. One of the things that can make that particularly difficult is the large install-base of older versions of Internet Explorer that don't run in standards mode by default. Specifically, IE8 and 9 still have a combined market share of about `30 percent <http://thenextweb.com/insider/2014/02/01/ie11-passes-ie10-market-share-firefox-slips-bit-chrome-gains-back-share/>`_.
 

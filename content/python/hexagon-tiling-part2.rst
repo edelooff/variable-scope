@@ -3,6 +3,7 @@ Hexagon tilings with Python - Part 2
 
 :date: 2014-10-1
 :tags: Python, drawing, PIL, aggdraw
+:status: published
 
 In part one, we covered the drawing of smooth, anti-aliased hexagons in a grid-like fashion. In this post, we will extend that beginning into a program to draw hexagon fills that can be used for a tiled background. The key improvements that were identified in the previous post:
 

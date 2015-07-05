@@ -3,6 +3,7 @@ Mordac the (query) preventer
 
 :date: 2014-09-19
 :tags: Python, SQLAlchemy
+:status: published
 
 A small update, a much delayed update, but still an update.
 

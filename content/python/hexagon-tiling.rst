@@ -3,6 +3,7 @@ Hexagon tilings with Python
 
 :date: 2014-09-25
 :tags: Python, drawing, PIL, aggdraw
+:status: published
 
 A few days ago I ended up on a website (I forget where) which featured a very nice and subtle square tiling on the background of the page. Now, this is in itself is not astonishing, plenty of folks and businesses out there will present you with all sorts of tessellated backgrounds. However, it got me thinking about doing some tiling background myself. Not because I particularly need one (it certainly wouldn't look right on this blog), but just to experiment. To make things slightly more interesting I opted for another shape: *the hexagon*.
 

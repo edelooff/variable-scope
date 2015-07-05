@@ -3,6 +3,7 @@ Reflection and introspection: an analysis of µWeb (part 2)
 
 :date: 2014-06-08
 :tags: Python, µWeb, not-invented-here
+:status: published
 
 In the `previous post`_ we reviewed the overall design of µWeb and dove deep into the provided template language. We will continue where we left off and cover the remaining parts of the system: the presenter, the model and the application server.
 
