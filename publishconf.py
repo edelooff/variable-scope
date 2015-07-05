@@ -10,6 +10,10 @@ import sys
 sys.path.append(os.curdir)
 from pelicanconf import *
 
+DEFAULT_METADATA = {
+    'status': 'draft',
+}
+
 SITEURL = 'http://variable-scope.com'
 RELATIVE_URLS = False
 
