@@ -2,6 +2,8 @@ Storing and verifying passwords with SQLAlchemy
 ###############################################
 
 :tags: Python, SQLAlchemy, bcrypt, passwords
+:date: 2015-08-24
+:status: published
 
 I really enjoy abstractions.
 
