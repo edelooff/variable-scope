@@ -6,10 +6,17 @@ CC_ATTR_MARKUP = False
 DEFAULT_DATE = 'fs'
 DISPLAY_CATEGORIES_ON_MENU = False
 DISPLAY_TAGS_ON_SIDEBAR = True
-DEFAULT_PAGINATION = 4
 SUMMARY_MAX_LENGTH = 300
 TYPOGRIFY = True
 
+# Pagination
+DEFAULT_PAGINATION = 6
+DEFAULT_ORPHANS = 3
+PAGINATION_PATTERNS = (
+    (1, '{base_name}/', '{base_name}/index.html'),
+    (2, '{base_name}/page/{number}/', '{base_name}/page/{number}/index.html'))
+
+# Plugin configuration
 PLUGIN_PATHS = ['custom-plugins', 'pelican-plugins']
 PLUGINS = [
     'better_figures_and_images',
@@ -18,7 +25,10 @@ PLUGINS = [
     'related_posts',
     'summary']
 
+# Plugin: related_posts
 RELATED_POSTS_MAX = 4
+
+# Plugin: better_figures_and_images
 RESPONSIVE_IMAGES = True
 
 # Sidebar and social config settings
@@ -36,6 +46,7 @@ PYGMENTS_STYLE = 'github'
 CUSTOM_CSS = 'static/overrides.css'
 
 # Configure content directory and non-article content to include
+DELETE_OUTPUT_DIRECTORY = True
 PATH = 'content'
 STATIC_PATHS = 'images', 'static'
 EXTRA_PATH_METADATA = {

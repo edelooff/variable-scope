@@ -20,7 +20,6 @@ DISQUS_SITENAME = 'variablescope'
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
 CATEGORY_FEED_ATOM = 'feeds/{slug}.atom.xml'
 
-DELETE_OUTPUT_DIRECTORY = True
 OUTPUT_PATH = 'output-publish/'
 
 AUTHOR_SAVE_AS = 'author/{slug}'
