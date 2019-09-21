@@ -36,9 +36,7 @@ THEME = 'pelican-themes/pelican-bootstrap3'
 BOOTSTRAP_THEME = 'cosmo'
 JINJA_ENVIRONMENT = {'extensions': ['jinja2.ext.i18n']}
 PYGMENTS_STYLE = 'github'
-CUSTOM_CSS_LIST = (
-    'static/overrides.css',
-    'http://fonts.googleapis.com/css?family=Inconsolata:400,700')
+CUSTOM_CSS = 'static/overrides.css'
 
 # Configure content directory and non-article content to include
 PATH = 'content'
