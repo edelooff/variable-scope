@@ -1,9 +1,5 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*- #
-from __future__ import unicode_literals
-
-AUTHOR = u'Elmer de Looff'
-SITENAME = u'Variable Scope'
+AUTHOR = 'Elmer de Looff'
+SITENAME = 'Variable Scope'
 TIMEZONE = 'Europe/Amsterdam'
 CC_LICENSE = 'CC-BY-SA'
 CC_ATTR_MARKUP = False
@@ -18,6 +14,7 @@ PLUGIN_PATHS = ['custom-plugins', 'pelican-plugins']
 PLUGINS = [
     'better_figures_and_images',
     'extra_rst_roles',
+    'i18n_subsites',
     'related_posts',
     'summary']
 
@@ -35,8 +32,9 @@ SOCIAL = (
 )
 
 # Theme and theme configuration
-THEME = 'pelican-bootstrap3'
+THEME = 'pelican-themes/pelican-bootstrap3'
 BOOTSTRAP_THEME = 'cosmo'
+JINJA_ENVIRONMENT = {'extensions': ['jinja2.ext.i18n']}
 PYGMENTS_STYLE = 'github'
 CUSTOM_CSS_LIST = (
     'static/overrides.css',
