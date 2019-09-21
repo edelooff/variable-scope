@@ -26,10 +26,7 @@ GITHUB_USER = 'edelooff'
 GITHUB_SKIP_FORK = True
 USE_OPEN_GRAPH = False
 LINKS = ()
-SOCIAL = (
-    ('Google+', 'https://plus.google.com/+ElmerdeLooff?rel=author'),
-    ('GitHub', 'http://github.com/edelooff'),
-)
+SOCIAL = [('GitHub', 'http://github.com/edelooff')]
 
 # Theme and theme configuration
 THEME = 'pelican-themes/pelican-bootstrap3'
