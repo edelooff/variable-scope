@@ -38,7 +38,7 @@ The first step towards tiling hexagons is to create a single hexagon. The first 
 
 .. PELICAN_END_SUMMARY
 
-.. figure:: {filename}/images/hexagon-tiling/hexagon_pil.png
+.. figure:: {static}/images/hexagon-tiling/hexagon_pil.png
     :align: right
     :alt: A hexagon with a zoomed section showing aliasing on the slanted edges
 
@@ -86,7 +86,7 @@ Aggdraw_ is an extension to PIL based on the `Anti-Grain Geometry`_ library whic
       draw.flush()
       image.show()
 
-.. figure:: {filename}/images/hexagon-tiling/hexagon_aggdraw.png
+.. figure:: {static}/images/hexagon-tiling/hexagon_aggdraw.png
     :align: right
     :alt: A hexagon with a zoomed section showing anti-aliased slanted edges
 
@@ -150,7 +150,7 @@ A *row* has hexagons all at the exact same height, and every odd-numbered row is
       draw.flush()
       image.show()
 
-.. figure:: {filename}/images/hexagon-tiling/hexagon_array.png
+.. figure:: {static}/images/hexagon-tiling/hexagon_array.png
     :align: right
     :alt: A tiling of hexagons in increasingly lighter shades of blue.
 

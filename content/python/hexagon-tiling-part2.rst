@@ -46,7 +46,7 @@ Because the pattern size is very closely coupled to the dimensions of the hexago
 
 .. PELICAN_END_SUMMARY
 
-.. figure:: {filename}/images/hexagon-tiling/hexagon_autosized.png
+.. figure:: {static}/images/hexagon-tiling/hexagon_autosized.png
     :align: right
     :alt: A tiled set of 4x3 hexagons, arranged on a automatically sized canvas.
 
@@ -125,7 +125,7 @@ Using this random color function we get some.. *colorful* results:
       image.show()
       image.save('hexagon_agg_tile.png')
 
-.. figure:: {filename}/images/hexagon-tiling/hexagon_random_fill.png
+.. figure:: {static}/images/hexagon-tiling/hexagon_random_fill.png
     :align: right
     :alt: A tiling of randomly colors hexagons.
 
@@ -211,7 +211,7 @@ The final version of the script combines the code from the previous three sectio
 Results!
 ========
 
-.. figure:: {filename}/images/hexagon-tiling/hexagons_tile_5x5.png
+.. figure:: {static}/images/hexagon-tiling/hexagons_tile_5x5.png
     :alt: A wrapped tiling of randomly colored hexagons.
 
     The fruits of our labor, a tiling with no discernible seam.
