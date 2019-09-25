@@ -10,7 +10,7 @@ DEFAULT_METADATA = {
     'status': 'draft',
 }
 
-SITEURL = 'http://variable-scope.com'
+SITEURL = 'https://variable-scope.com'
 RELATIVE_URLS = False
 
 PLUGINS.append('sitemap')
