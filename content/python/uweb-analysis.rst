@@ -271,7 +271,7 @@ Appendix B: Popularity of mod_python
 
 The following is a Google Trends graph that plots the relative popularity of *mod_python*, *mod_wsgi* and *WSGI* in terms of search volume:
 
-.. figure:: {filename}/images/uweb-review/google_trends_mod_python.png
+.. figure:: {static}/images/uweb-review/google_trends_mod_python.png
     :alt: The popularity of mod_python slowly declines and is overtaken by mod_wsgi and WSGI
 
     The popularity of mod_python slowly declines and is overtaken by mod_wsgi and WSGI
@@ -334,8 +334,8 @@ Footnotes & References
 ..  _mod_python: http://modpython.org/
 ..  _mod_python google trend: http://www.google.com/trends/explore#q=mod_python,WSGI,mod_wsgi
 ..  _paste: http://pythonpaste.org/
-..  _part two: {filename}uweb-analysis_cont.rst
-..  _previous post: {filename}uweb-history.rst
+..  _part two: {static}uweb-analysis_cont.rst
+..  _previous post: {static}uweb-history.rst
 ..  _pylint: http://pylint.org/
 ..  _pyramid: http://www.pylonsproject.org/
 ..  _µweb: http://uweb-framework.nl/

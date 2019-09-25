@@ -5,7 +5,7 @@ Creating a mostly-random color generator
 :tags: Python, random
 :status: published
 
-.. figure:: {filename}/images/hexagon-tiling/hexagons_random_rgb.png
+.. figure:: {static}/images/hexagon-tiling/hexagons_random_rgb.png
     :align: right
     :alt: Grid of randomly colored hexagons
 
@@ -80,7 +80,7 @@ Let's build a simple randomizing function where can lock down the hue. To make t
     random_color(sat=1, val=1) # max chroma: [36, 0, 255]
 
 
-.. figure:: {filename}/images/hexagon-tiling/hexagons_locked_hue.png
+.. figure:: {static}/images/hexagon-tiling/hexagons_locked_hue.png
     :align: right
     :alt: Randomly brightness and saturation of red hexagons
 
@@ -195,7 +195,7 @@ In the last code example, we update the tiling creator from the `last post`_ to 
       for color_func in random_blues():
         draw_tiling(12, 5, func)
 
-.. figure:: {filename}/images/hexagon-tiling/hexagon_blues.png
+.. figure:: {static}/images/hexagon-tiling/hexagon_blues.png
     :align: center
     :alt: Example results of the defined color generators
 
@@ -216,7 +216,7 @@ Footnotes
 
 .. _colorsys: https://docs.python.org/2/library/colorsys.html
 .. _color wheel: http://en.wikipedia.org/wiki/Color_wheel
-.. _drawing hexagons: {filename}/python/hexagon-tiling.rst
+.. _drawing hexagons: {static}/python/hexagon-tiling.rst
 .. _dynamic range: http://en.wikipedia.org/wiki/Dynamic_range#Photography
-.. _last post: {filename}/python/hexagon-tiling-part2.rst
+.. _last post: {static}/python/hexagon-tiling-part2.rst
 .. _raw image format: http://en.wikipedia.org/wiki/Raw_image_format#Sensor_image_data

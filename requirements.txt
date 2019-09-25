@@ -1,0 +1,8 @@
+bs4
+cssutils
+invoke
+jinja2[i18n]
+pelican
+Pillow
+pysvg-py3
+typogrify
