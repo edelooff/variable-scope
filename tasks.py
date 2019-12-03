@@ -1,11 +1,3 @@
-# Standard modules
-from http.server import SimpleHTTPRequestHandler
-import os
-import subprocess
-import sys
-import socketserver
-import threading
-
 # Third-party modules
 from invoke import task
 
@@ -27,6 +19,7 @@ def build(ctx):
 
 @task
 def serve(ctx):
+    print('Running preview server on http://localhost:8000')
     ctx.run('pelican -s pelicanconf.py --autoreload --listen', pty=True)
 
 
