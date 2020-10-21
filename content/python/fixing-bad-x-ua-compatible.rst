@@ -71,6 +71,6 @@ Uncompressed, the header solution is 35 bytes against 64 for the meta tag. Looki
 Postscript
 ==========
 
-Irony demands that this blog theme contains the :code:`X-UA-Compatible` meta tag. There's no way to solve this on the application layer of this blog, given that the application layer is simply not there; there are only static files (see the `initial post <{static}../meta/hello-world.rst>`_ for details). With no application code to determine whether or not to set the header, the remaining option is to set it from the HTTP daemon.
+Irony demands that this blog theme contains the :code:`X-UA-Compatible` meta tag. There's no way to solve this on the application layer of this blog, given that the application layer is simply not there; there are only static files (see the `initial post <{filename}../meta/hello-world.rst>`_ for details). With no application code to determine whether or not to set the header, the remaining option is to set it from the HTTP daemon.
 
 While this is certainly a feasible solution, it would mean that parts far away from the frontend code (HTML, CSS) control frontend behavior. Experience has taught me that this sort of sharding makes bugs both more likely to happen and harder to find. Configuration management would help with that, but that's another topic entirely.

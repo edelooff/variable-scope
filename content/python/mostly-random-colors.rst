@@ -216,7 +216,7 @@ Footnotes
 
 .. _colorsys: https://docs.python.org/2/library/colorsys.html
 .. _color wheel: http://en.wikipedia.org/wiki/Color_wheel
-.. _drawing hexagons: {static}/python/hexagon-tiling.rst
+.. _drawing hexagons: {filename}/python/hexagon-tiling.rst
 .. _dynamic range: http://en.wikipedia.org/wiki/Dynamic_range#Photography
-.. _last post: {static}/python/hexagon-tiling-part2.rst
+.. _last post: {filename}/python/hexagon-tiling-part2.rst
 .. _raw image format: http://en.wikipedia.org/wiki/Raw_image_format#Sensor_image_data

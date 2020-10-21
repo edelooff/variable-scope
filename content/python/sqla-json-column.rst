@@ -142,4 +142,4 @@ This, unfortunately, is because the change tracking of :py:`class MutableDict` o
 
 __ `nested mutable`_
 
-.. _nested mutable: {static}sqla-json-nested-mutable.rst
+.. _nested mutable: {filename}sqla-json-nested-mutable.rst

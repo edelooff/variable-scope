@@ -7,7 +7,7 @@ Mutation tracking in nested JSON structures using SQLAlchemy
 
 .. class:: post-intro
 
-    This is part two of a two-part post on storage of JSON using SQLAlchemy. The `first post <{static}/python/sqla-json-column.rst>`_ covered the basics of creating a JSON column type and tracking mutations. In this post, we will continue from there to cover mutation tracking in arbitrarily nested structures.
+    This is part two of a two-part post on storage of JSON using SQLAlchemy. The `first post <{filename}/python/sqla-json-column.rst>`_ covered the basics of creating a JSON column type and tracking mutations. In this post, we will continue from there to cover mutation tracking in arbitrarily nested structures.
 
 In the previous post we ended with an example of appending to an existing list. Upon committing the changes in the session and reloading the object, it was shown the appended string had not been stored. This happened because changing the list in-place did not trigger the :py:`changed()` method of the :py:`class MutableDict`. Only setting or deleting a key from the dictionary marks it as changed, and marking it as changed upon access (which is all we did on the dictionary itself) would cause far too many updates of the database.
 

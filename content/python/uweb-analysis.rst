@@ -334,8 +334,8 @@ Footnotes & References
 ..  _mod_python: http://modpython.org/
 ..  _mod_python google trend: http://www.google.com/trends/explore#q=mod_python,WSGI,mod_wsgi
 ..  _paste: http://pythonpaste.org/
-..  _part two: {static}uweb-analysis_cont.rst
-..  _previous post: {static}uweb-history.rst
+..  _part two: {filename}uweb-analysis_cont.rst
+..  _previous post: {filename}uweb-history.rst
 ..  _pylint: http://pylint.org/
 ..  _pyramid: http://www.pylonsproject.org/
 ..  _µweb: http://uweb-framework.nl/

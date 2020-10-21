@@ -372,7 +372,7 @@ Footnotes & References
 ..  _bottle: http://bottlepy.org/
 ..  _django: https://www.djangoproject.com/
 ..  _flask: http://flask.pocoo.org/
-..  _previous post: {static}uweb-analysis.rst
+..  _previous post: {filename}uweb-analysis.rst
 ..  _pyramid: http://www.pylonsproject.org/projects/pyramid/about
 ..  _sqlalchemy: http://www.sqlalchemy.org/
 ..  _upstart: http://upstart.ubuntu.com/cookbook/
