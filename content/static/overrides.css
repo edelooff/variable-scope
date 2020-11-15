@@ -78,6 +78,12 @@ article .fn-backref {
   font-size: small;
   font-style: italic;
 }
+.figure.align-right {
+  margin-left: 0.75em;
+}
+.figure.align-left {
+  margin-right: 0.75em;
+}
 
 /* post-intro class for introductions to posts */
 p.post-intro {
