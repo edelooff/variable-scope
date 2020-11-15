@@ -25,7 +25,9 @@ But before we dive into the construction of trees proper, we have to briefly cov
     :align: right
     :alt: A simple binary search tree.
 
-    A simple binary search tree. Traversal starts at the root node (``4``), and recursively visits the left children before the right. Small differences in the order of yielding values lead to distinctly different results.
+    A simple binary search tree
+
+    Traversal starts at the root node (``4``), and recursively visits the left children before the right. Small differences in the order of yielding current and child node values lead to distinctly different results.
 
 Starting from the root of the tree, the algorithm visits each node by first visiting the left child and recursing there. After that has completed, the right child is visited, again recursing there. This corecursion creates a path that travels down along a left edge, methodically jumps back to the closest unexplored right branch, and repeats that process until all nodes have been covered.
 
@@ -126,7 +128,7 @@ Complexity wise, the memory requirement is the same as that of depth-first searc
 
 What you'll note here is that we are able to reconstruct the tree because of a particular property of binary search trees: child ordering. Children with smaller values go to the left, larger ones to the right. The quote at the top of this section refers to *generic* binary trees, where there are no guarantees about descendant-ordering.
 
-For a generic binary tree, it is impossible to unambiguously reconstruct it from just its pre-order sequentialisation, because distinct trees share a pre-order sequence:
+For a generic binary tree, it is impossible to unambiguously reconstruct it from just its pre-order sequentialisation, because different trees may be the source of the pre-order sequence, and there is not enough information to disambiguate them:
 
 .. figure:: {static}/images/tree-construction/identical-preorder.png
     :alt: Three distinct binary trees with identical pre-order.
@@ -148,7 +150,9 @@ Clearly, we cannot rely on the ordering of individual values of any individual s
     :alt: Start of a tree construction, picking pre-order values until the in-order is reached.
     :align: right
 
-    The initial construction of in-order ``[1, 2, 3, 4]`` and pre-order sequence ``[4, 2, 1, 3]``. Take in-order value 1, and construct from pre-order until this value is reached.
+    Left descent rule
+
+    The initial construction of in-order ``[1,2,3,4]`` and pre-order sequence ``[4,2,1,3]``. Take in-order value 1, and construct from pre-order until this value is reached.
 
 * The *pre-order* sequence starts at the root node
 * The *in-order* sequence starts at the furthest left node
@@ -171,6 +175,8 @@ Whenever the current values from the *pre-order* and *in-order* sequences are id
 .. figure:: {static}/images/tree-construction/backtrack-right.png
     :alt: Backtracking based on in-order values that have been seen before, expansion to the right after.
     :align: right
+
+    Backtrack and right-expansion
 
     The next in-order value is ``2``, which is at the top of the stack, so we backtrack. The following in-order value is ``3``, a new expansion target. This is also the next value on the *pre-order* sequence, and attached as a right child.
 
@@ -215,7 +221,7 @@ From these observations and basic rules, we can create a Python implementation t
 
 The setup to this function is pretty similar to our function which constructs a binary search tree from just a *pre-order* traversal:
 
-* An iterator is retrieved from the *pre-order* sequence (to support :py:`next`)
+* An iterator is retrieved from the *pre-order* sequence (to support :py:`next` and continued iteration)
 * A *root* node is created and also assigned as *current*
 * A stack is created that is used to control backtracking
 
