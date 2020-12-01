@@ -79,9 +79,11 @@ article .fn-backref {
   font-style: italic;
 }
 .figure.align-right {
+  clear: right;
   margin-left: 0.75em;
 }
 .figure.align-left {
+  clear: left;
   margin-right: 0.75em;
 }
 
