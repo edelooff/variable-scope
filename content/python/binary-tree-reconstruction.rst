@@ -19,8 +19,6 @@ Depth-first search
 
 But before we dive into the construction of trees proper, we have to briefly cover how to serialise one. A favourite among interviewers, and elegant as a recursive algorithm, depth-first search is the easiest way of traversing all the nodes in a tree, and extracting their values along the way.
 
-.. PELICAN_END_SUMMARY
-
 .. figure:: {static}/images/tree-construction/binary-search-tree.png
     :align: right
     :alt: A simple binary search tree.
@@ -30,6 +28,8 @@ But before we dive into the construction of trees proper, we have to briefly cov
     Traversal starts at the root node (``4``), and recursively visits the left children before the right. Small differences in the order of yielding current and child node values lead to distinctly different results.
 
 Starting from the root of the tree, the algorithm visits each node by first visiting the left child and recursing there. After that has completed, the right child is visited, again recursing there. This corecursion creates a path that travels down along a left edge, methodically jumps back to the closest unexplored right branch, and repeats that process until all nodes have been covered.
+
+.. PELICAN_END_SUMMARY
 
 The algorithm avoids costly comparisons, needing only simple equality checks to establish there is a child node to descend to, and the memory use is linear with the height of the tree. In the absolute worst case, this height is equal to the number of nodes in the tree (every child is either a left or right child), but as the tree becomes more *balanced*, the height approaches *O(log n)*, and so does the memory requirement.
 
