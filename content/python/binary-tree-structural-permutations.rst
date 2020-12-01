@@ -43,24 +43,24 @@ At this point, before we attempt to create our own forest of binary trees, it's 
         while nodes:
             node = nodes.popleft()
             if child := node.left:
-                graph.add_node(Node(child.value))
-                graph.add_edge(Edge(node.value, child.value))
+                graph.add_node(Node(id(child), label=child.value))
+                graph.add_edge(Edge(id(node), id(child)))
                 nodes.append(child)
             draw_node_divider(graph, node)
             if child := node.right:
-                graph.add_node(Node(child.value))
-                graph.add_edge(Edge(node.value, child.value))
+                graph.add_node(Node(id(child), label=child.value))
+                graph.add_edge(Edge(id(node), id(child)))
                 nodes.append(child)
         graph.write_png(name)
 
 
     def draw_node_divider(graph, node):
         """Draws a divider to ensure visible single branch direction."""
-        label = str(node.value)
+        target = id(node)
         for _ in range(height(node)):
-            source, label = label, f":{label}"
-            graph.add_node(Node(label, label="", style="invis", width=0))
-            graph.add_edge(Edge(source, label, style="invis", weight=5))
+            parent, target = target, f":{target}"
+            graph.add_node(Node(target, label="", style="invis", width=0))
+            graph.add_edge(Edge(parent, target, style="invis", weight=5))
 
 
     @lru_cache
